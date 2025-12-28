@@ -1,0 +1,16 @@
+{
+  "movie_updates": [
+    {
+      "id": 1001,
+      "title": "A Tribe Called Judah",
+      "description": "The highest-grossing Nollywood film ever. Follow the brothers on their mission to save their mother.",
+      "poster_url": "https://raw.githubusercontent.com/YourUser/YourRepo/main/images/tribe_judah.jpg"
+    },
+    {
+      "id": 1002,
+      "title": "King of Boys: The Return",
+      "description": "Eniola Salami returns from exile to reclaim her power. The throne is waiting.",
+      "poster_url": "https://raw.githubusercontent.com/YourUser/YourRepo/main/images/kob_return.jpg"
+    }
+  ]
+}
