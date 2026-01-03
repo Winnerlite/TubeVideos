@@ -3,8 +3,8 @@
     {
       "id": 1001,
       "title": "Anaconda",
-      "description": "Anaconda is a comedy about two friends' (Paul Rudd, Jack Black) attempt to remake the 1997 cult classic, only to face attacks by a real giant anaconda. In addition to humans being snatched or devoured by giant snakes, the action includes gun threats, shootings, head-butting, a snake getting torn to pieces by a propellor, characters being knocked out, a wounded face slammed up against a window, and more. A character who's thought to be dead is used as a distraction, with a dead boar duct-taped to his head and a dead squirrel inserted into his mouth. Characters flirt, and there's dialogue related to cheating. Language includes a use of 'f--k', plus 's--t', 'a--hole', 'ass', 'bitch', 'goddamn', 'hell', 'Jesus', 'Christ', 'oh my God', 'piss', 'damn'.",
-      "poster_url": "https://www.hollywoodreporter.com/wp-content/uploads/2025/09/Anaconda-Trailer-Jack-Black.jpg?w=1296&amp;h=730&amp;crop=1"
+      "description": "Anaconda is a comedy about two friends' (Paul Rudd, Jack Black) attempt to remake the 1997 cult classic, only to face attacks by a real giant anaconda. In addition to humans being snatched or devoured by giant snakes, the action includes gun threats, shootings, head-butting, a snake getting torn to pieces by a propeller, characters being knocked out, a wounded face slammed up against a window, and more. A character who's thought to be dead is used as a distraction, with a dead boar duct-taped to his head and a dead squirrel inserted into his mouth. Characters flirt, and there's dialogue related to cheating. Language includes a use of 'f--k', plus 's--t', 'a--hole', 'ass', 'bitch', 'goddamn', 'hell', 'Jesus', 'Christ', 'oh my God', 'piss', 'damn'.",
+      "poster_url": "https://www.hollywoodreporter.com/wp-content/uploads/2025/09/Anaconda-Trailer-Jack-Black.jpg?w=1296&h=730&crop=1"
     },
     {
       "id": 1002,
@@ -12,107 +12,221 @@
       "description": "A mother wakes up in her apartment to her 5-year-old boy exclaiming that there's water everywhere outside. Before she knows it, the water level of her entire apartment complex is rising, and she and her son must fight to get to the roof before they are washed away. There's some gun violence, shootouts, and fighting. Characters get shot in the chest and head (impacts not shown) and die. Characters fight, wrestle, punch, kick, throw, hit, and choke other characters. A character strangles another character to death. A character is dragged by her hair. A character throws two people out of a high story window after breaking their arms. Many people get caught in huge flooding, struggle to swim, and drown. Dead bodies float along the water's surface and underwater. Huge waves crash into and through buildings and windows, taking people along, many dying in the process. A 5-year-old boy is handcuffed to a railing. People also shave the boy's head and take a circular saw to the boy's scalp (not shown).",
       "poster_url": "https://www.kino-teatr.ru/movie/kadr/204547/1993505.jpg"
     },
-	
-	{
-  "id": 1003,
-  "title": "Now You See Me: Now You Don't",
-  "description": "Now You See Me: Now You Don't is the third installment in the popular heist franchise. It reunites the original four Horsemen—Danny (Jesse Eisenberg), Merritt (Woody Harrelson), Jack (Dave Franco), and Henley (Isla Fisher)—as well as their nemesis-turned-ally, Thaddeus (Morgan Freeman), and a few new faces, to right a wrong through teamwork and sleight of hand. The main characters are still Robin Hood-style vigilantes, putting themselves at risk to stage elaborately planned performances during which they shift the fortunes of greedy CEOs to those who are deserving. It's justice, but it's also a heist, and the characters lie and fight with authority figures to pull it off. Expect mild but exciting action violence, with pushing, punches, and heads getting hit with hard objects. A shooting has fatal consequences but no blood. The group also throws insults at each other faster than Jack throws playing cards, with some involving strong language like s--t, \"a--hole\", and d--k. A joke implies that a character took edibles, and characters hold alcoholic drinks but aren't shown actually drinking them. There's kissing and a suggestive joke.",
-  "poster_url": "https://i.ytimg.com/vi/3JCNP8ABWH4/maxresdefault.jpg"
-},
-	
-	{
+    {
+      "id": 1003,
+      "title": "Now You See Me: Now You Don't",
+      "description": "Now You See Me: Now You Don't is the third installment in the popular heist franchise. It reunites the original four Horsemen—Danny (Jesse Eisenberg), Merritt (Woody Harrelson), Jack (Dave Franco), and Henley (Isla Fisher)—as well as their nemesis-turned-ally, Thaddeus (Morgan Freeman), and a few new faces, to right a wrong through teamwork and sleight of hand. The main characters are still Robin Hood-style vigilantes, putting themselves at risk to stage elaborately planned performances during which they shift the fortunes of greedy CEOs to those who are deserving. It's justice, but it's also a heist, and the characters lie and fight with authority figures to pull it off. Expect mild but exciting action violence, with pushing, punches, and heads getting hit with hard objects. A shooting has fatal consequences but no blood. The group also throws insults at each other faster than Jack throws playing cards, with some involving strong language like s--t, a--hole, and d--k. A joke implies that a character took edibles, and characters hold alcoholic drinks but aren't shown actually drinking them. There's kissing and a suggestive joke.",
+      "poster_url": "https://i.ytimg.com/vi/3JCNP8ABWH4/maxresdefault.jpg"
+    },
+    {
       "id": 1004,
       "title": "Merv",
-      "description": " Merv stars Zooey Deschanel and Charlie Cox and centers on a dog who is brokenhearted over his owners' breakup.  ",
-      "poster_url": "https://www.kino-teatr.ru/movie/kadr/203936/1984255.jpg"
+      "description": "Merv stars Zooey Deschanel and Charlie Cox and centers on a dog who is brokenhearted over his owners' breakup. Couples flirt, kiss, and a woman goes on bad Hinge dates.",
+      "poster_url": "https://i.ytimg.com/vi/DZcsmR11QE4/maxresdefault.jpg"
     },
-	
-	
-	{
+    {
       "id": 1005,
       "title": "Influencers",
-      "description": " Influencers is a sequel to Influencer about a queer lesbian serial killer, CW (Cassandra Naud), who targets social media and content creator celebrities. There are major moments of strong violence, killing, gore, blood, injury detail, self-harm, and suicide. A character slices her own neck with a kitchen knife, and the wound shows blood pouring out. A character pushes another down a deep well, and later the killer finds her alive but with a broken body, limbs awry, bloody, and bones coming out of places. A character bashes someone in the head with a heavy lamp, then uses the lamp cord to strangle the victim to death. A character is stabbed in the stomach with a knife, then stabbed many times in the chest, bleeds out, and dies. A character hacks into another character's neck and body with a butcher knife. A character experiences online harassment and abuse. Couples have sex, romantically kiss, and talk about intimate relationships. Bared breasts and bare buttocks are shown. A character films himself and two naked (no genitalia shown) people having sex. Characters are frequently shown in bathing suits, bikinis, underwear, and lingerie. Characters often drink alcohol, smoke cigarettes, and some snort cocaine. ",
+      "description": "Influencers is a sequel to Influencer about a queer lesbian serial killer, CW (Cassandra Naud), who targets social media and content creator celebrities. There are major moments of strong violence, killing, gore, blood, injury detail, self-harm, and suicide. A character slices her own neck with a kitchen knife, and the wound shows blood pouring out. A character pushes another down a deep well, and later the killer finds her alive but with a broken body, limbs awry, bloody, and bones coming out of places. A character bashes someone in the head with a heavy lamp, then uses the lamp cord to strangle the victim to death. A character is stabbed in the stomach with a knife, then stabbed many times in the chest, bleeds out, and dies. A character hacks into another character's neck and body with a butcher knife. A character experiences online harassment and abuse. Couples have sex, romantically kiss, and talk about intimate relationships. Bared breasts and bare buttocks are shown. A character films himself and two naked (no genitalia shown) people having sex. Characters are frequently shown in bathing suits, bikinis, underwear, and lingerie. Characters often drink alcohol, smoke cigarettes, and some snort cocaine.",
       "poster_url": "https://upload.wikimedia.org/wikipedia/en/thumb/c/c2/Influencers_Key_Art.jpg/500px-Influencers_Key_Art.jpg"
     },
-	
-	
-	{
+    {
       "id": 1006,
       "title": "Keeper",
       "description": "Keeper is director Osgood Perkins' creepy supernatural horror movie about a couple (Tatiana Maslany and Rossif Sutherland) that goes to a remote cabin in the woods for a romantic weekend, only to find something waiting. Violence includes scary images/moments, a body with its head almost cut off, a severed head, ghostly figures, guns used to threaten and shoot, shooting, flashes of screaming, bloody faces, and more. Characters kiss, and there's dialogue about an affair that uses the phrase side piece.",
       "poster_url": "https://i.ytimg.com/vi/3JCNP8ABWH4/maxresdefault.jpg"
     },
-	
-	
-	{
+    {
       "id": 1007,
       "title": "Predators",
-      "description": "Predators is a documentary about the dangers of child predators, online safety, and the importance of protecting kids. The film doesn't show graphic violence, but children are harassed and targeted, there's an off-screen gunshot, and a character dies by suicide. Sexual content includes adult women in skimpy outfits used as decoys, some appearing underage. No explicit sexual acts are shown, but the film deals with sexual exploitation and predatory behavior. ",
+      "description": "Predators is a documentary about the dangers of child predators, online safety, and the importance of protecting kids. The film doesn't show graphic violence, but children are harassed and targeted, there's an off-screen gunshot, and a character dies by suicide. Sexual content includes adult women in skimpy outfits used as decoys, some appearing underage. No explicit sexual acts are shown, but the film deals with sexual exploitation and predatory behavior.",
       "poster_url": "https://www.commonsensemedia.org/sites/default/files/styles/ratio_2_3_large/public/product-images/csm-movie/predators_0.jpg"
     },
-	
-	{
+    {
       "id": 1008,
       "title": "Diary of a Wimpy Kid: The Last Straw",
-      "description": " The film's central conflict is that Greg Heffley's father, Frank, is frustrated with Greg's wimpy behavior and lack of discipline. As a result, he threatens to send Greg to Spag Union Military Academy in the hopes it will toughen him up, to avoid this fate, Greg devises a plan: he must prove his worth by earning the Woodchipper Elite badge—a top honor from a local scouting group called the Woodchippers . Frank agrees to this deal, but a camping trip he must chaperone turns into a series of comedic disasters",
+      "description": "The film's central conflict is that Greg Heffley's father, Frank, is frustrated with Greg's wimpy behavior and lack of discipline. As a result, he threatens to send Greg to Spag Union Military Academy in the hopes it will toughen him up. To avoid this fate, Greg devises a plan: he must prove his worth by earning the Woodchipper Elite badge—a top honor from a local scouting group called the Woodchippers. Frank agrees to this deal, but a camping trip he must chaperone turns into a series of comedic disasters.",
       "poster_url": "https://i.ytimg.com/vi/4OsejbV8SlM/maxresdefault.jpg"
     },
-	
-	{
+    {
       "id": 1009,
       "title": "The Housemaid",
-      "description": "The Housemaid is director Paul Feig's female-centered psychological thriller based on Freida McFadden's bestselling book about a wealthy couple who hire domestic help. The premise seems to promise a plot that pits women (played by Amanda Seyfried and Sydney Sweeney) against each other, but it's actually much more than that. Expect steamy sex scenes with full nudity, including breasts and a solid view of a man's backside. Violence is also intense, with a brief rape scene , stabbing, pushing, punches, and kicks. Psychological torture that becomes bloody self-harm feels designed to make viewers cringe and squirm.  ",
+      "description": "The Housemaid is director Paul Feig's female-centered psychological thriller based on Freida McFadden's bestselling book about a wealthy couple who hire domestic help. The premise seems to promise a plot that pits women (played by Amanda Seyfried and Sydney Sweeney) against each other, but it's actually much more than that. Expect steamy sex scenes with full nudity, including breasts and a solid view of a man's backside. Violence is also intense, with a brief rape scene, stabbing, pushing, punches, and kicks. Psychological torture that becomes bloody self-harm feels designed to make viewers cringe and squirm.",
       "poster_url": "https://www.kino-teatr.ru/movie/kadr/201620/1959864.jpg"
     },
-	
-	{
+    {
       "id": 1010,
       "title": "Avatar: Fire and Ash",
-      "description": " Avatar: Fire and Ash is the third installment in director James Cameron's hit franchise. This time around, Jake (Sam Worthington) and Neytiri's (Zoe Saldaña) family faces off against a new foe, the Ash People raiders and their ruthless chief, Varang (Oona Chaplin), all while Pandora's escalating warfare brings forth more life-or-death obstacles. As in the previous installments, expect scenes of intense action violence, including explosions, armed combat, shots, and stabbings. Several prominent and supporting characters are injured or die, a couple of them during emotional moments. ",
+      "description": "Avatar: Fire and Ash is the third installment in director James Cameron's hit franchise. This time around, Jake (Sam Worthington) and Neytiri's (Zoe Saldaña) family faces off against a new foe, the Ash People raiders and their ruthless chief, Varang (Oona Chaplin), all while Pandora's escalating warfare brings forth more life-or-death obstacles. As in the previous installments, expect scenes of intense action violence, including explosions, armed combat, shots, and stabbings. Several prominent and supporting characters are injured or die, a couple of them during emotional moments.",
       "poster_url": "https://ew.com/thmb/So2H2Obkk0afiTpvyii5pVqdKtU=/2000x0/filters:no_upscale():max_bytes(150000):strip_icc()/avatar-fire-ash-trailer12-92525-257414360e864cb19ba7c232d9ee4a6f.jpg"
     },
-	
-	{
+    {
       "id": 1011,
       "title": "Goodbye June",
-      "description": " Goodbye June is an intense but moving family drama about a group of adult children who rush to their dying mother's bedside just a few weeks before Christmas. It's Kate Winslet's debut movie as director, based on a script by her son, Joe Anders. The titular character (Helen Mirren) collapses and is taken to the hospital, where doctors reveal that her cancer has spread, and she doesn't have long to live. Much of the film sees her in a hospital bed, hooked up to machines, and often in visible pain. ",
+      "description": "Goodbye June is an intense but moving family drama about a group of adult children who rush to their dying mother's bedside just a few weeks before Christmas. It's Kate Winslet's debut movie as director, based on a script by her son, Joe Anders. The titular character (Helen Mirren) collapses and is taken to the hospital, where doctors reveal that her cancer has spread, and she doesn't have long to live. Much of the film sees her in a hospital bed, hooked up to machines, and often in visible pain.",
       "poster_url": "https://i.ytimg.com/vi/pywVxuX2Qhg/maxresdefault.jpg"
     },
-	
-	{
+    {
       "id": 1012,
       "title": "Silent Night, Deadly Night",
-      "description": "Silent Night, Deadly Night—a remake of a 1984 holiday-themed slasher movie—is about a killer who dresses as Santa Claus (Rohan Campbell). Violence is very gory, with guns and shooting (sometimes fatally), bloody/decomposed corpses, and kids being hurt/in peril (beaten with a hockey stick, abducted, drugged, physically threatened). Characters are chopped up in various ways with an axel; there's a beheading, severed limbs, entrails, blood spatter, and much more. Couples flirt and kiss, and two people are seen after sex, naked under the covers (no sensitive body parts shown) ",
+      "description": "Silent Night, Deadly Night—a remake of a 1984 holiday-themed slasher movie—is about a killer who dresses as Santa Claus (Rohan Campbell). Violence is very gory, with guns and shooting (sometimes fatally), bloody/decomposed corpses, and kids being hurt/in peril (beaten with a hockey stick, abducted, drugged, physically threatened). Characters are chopped up in various ways with an ax; there's a beheading, severed limbs, entrails, blood spatter, and much more. Couples flirt and kiss, and two people are seen after sex, naked under the covers (no sensitive body parts shown).",
       "poster_url": "https://www.commonsensemedia.org/sites/default/files/styles/ratio_2_3_large/public/product-images/csm-movie/predators_0.jpg"
     },
-	
-	{
+    {
       "id": 1013,
       "title": "The Plague",
-      "description": " The Plague is an intense coming-of-age drama that tells a Lord of the Flies-esque story about adolescent boys at a water polo summer camp. The film deals with self-esteem, anxiety, peer pressure, and other hot-button issues for teens. Violence include property destruction, fighting, and self-harm that crosses the line into body horror, such as digging fingernails into skin until bleeding, skin pricking, and a graphic, bloody scene of a boy cutting his own fingers off with scissors. The boys characters also talk about fairly explicit sexual situations, drink alcohol, and smoke drugs.",
+      "description": "The Plague is an intense coming-of-age drama that tells a Lord of the Flies-esque story about adolescent boys at a water polo summer camp. The film deals with self-esteem, anxiety, peer pressure, and other hot-button issues for teens. Violence includes property destruction, fighting, and self-harm that crosses the line into body horror, such as digging fingernails into skin until bleeding, skin pricking, and a graphic, bloody scene of a boy cutting his own fingers off with scissors. The boys also talk about fairly explicit sexual situations, drink alcohol, and smoke drugs.",
       "poster_url": "https://i.ytimg.com/vi/5nd3wN2QraI/maxresdefault.jpg"
     },
-	
-	
-	
-	
-	
-	{
+    {
       "id": 1014,
       "title": "The Night My Dad Saved Christmas 2",
-      "description": "The Night My Dad Saved Christmas 2 is a Spanish-language holiday comedy about a father and son who team up to rescue Santa from a greedy toy company trying to take over Christmas. Violence stays mostly slapstick but includes threats and weapons that may feel intense for younger kids. Kids fire Nerf-style guns, adults break into buildings, and characters lock Santa in a box. Villains point a gun at Santa and fire a tranquilizer dart. Two Santas duel with oversized candy canes. A character drinks alcohol, and others comment on the smell; Santa drinks maple liquor. Mild romantic content includes a crush and a cheek kiss. On the positive side, the story emphasizes family bonds, teamwork, and choosing kindness over greed. ",
+      "description": "The Night My Dad Saved Christmas 2 is a Spanish-language holiday comedy about a father and son who team up to rescue Santa from a greedy toy company trying to take over Christmas. Violence stays mostly slapstick but includes threats and weapons that may feel intense for younger kids. Kids fire Nerf-style guns, adults break into buildings, and characters lock Santa in a box. Villains point a gun at Santa and fire a tranquilizer dart. Two Santas duel with oversized candy canes. A character drinks alcohol, and others comment on the smell; Santa drinks maple liquor. Mild romantic content includes a crush and a cheek kiss. On the positive side, the story emphasizes family bonds, teamwork, and choosing kindness over greed.",
       "poster_url": "https://www.commonsensemedia.org/sites/default/files/styles/ratio_2_3_large/public/product-images/csm-movie/predators_0.jpg"
     },
-	
-	
-	
-	{
+    {
       "id": 1015,
       "title": "Tron: Ares",
-      "description": "Tron: Ares is the third installment in the sci-fi franchise that began in the 1980s and continued in 2010's Tron: Legacy. This chapter follows Ares (Jared Leto), an advanced security program sent on a violent corporate espionage mission that marks the first contact between humans and a self-aware AI creation. Expect plenty of stylized action, including high-speed chases, combat with various weapons, explosions, large-scale property destruction, and moments of intense peril. One character is killed, and there are references to previous deaths. There's mild romantic tension between a human and an AI character.  The movie explores themes related to the nature of humanity, the role and responsibility of technology, the rise of artificial intelligence, and the corruption of corporate power.  ",
+      "description": "Tron: Ares is the third installment in the sci-fi franchise that began in the 1980s and continued in 2010's Tron: Legacy. This chapter follows Ares (Jared Leto), an advanced security program sent on a violent corporate espionage mission that marks the first contact between humans and a self-aware AI creation. Expect plenty of stylized action, including high-speed chases, combat with various weapons, explosions, large-scale property destruction, and moments of intense peril. One character is killed, and there are references to previous deaths. There's mild romantic tension between a human and an AI character. The movie explores themes related to the nature of humanity, the role and responsibility of technology, the rise of artificial intelligence, and the corruption of corporate power.",
       "poster_url": "https://lumiere-a.akamaihd.net/v1/images/g_studio_tronares_ares_galleryposter_6abf30c0.jpeg?region=0%2C0%2C1300%2C730"
+    },
+    {
+      "id": 1016,
+      "title": "Wonder Woman",
+      "description": "Wonder Woman, which is part of the DC superhero film universe, is the highest-profile comic book adaptation to date featuring a female superhero. As in most other comic-based movies, there's lots of explosive, destructive action violence, as well as fierce hand-to-hand fighting and armed combat (the movie takes place during World War I), resulting in a high body count—more so than in many other DC/Marvel movies.",
+      "poster_url": "https://i.ytimg.com/vi/jvJfhUOHMf0/maxresdefault.jpg"
+    },
+    {
+      "id": 1017,
+      "title": "Wicked: For Good",
+      "description": "Wicked: For Good—director Jon M. Chu's somewhat darker sequel to 2024's mega hit musical Wicked—continues the story of best friends Elphaba (Cynthia Erivo) and Glinda (Ariana Grande) as they step into their roles as the Wicked Witch of the West and Glinda the Good. While it's still appropriate for tweens and up, you can expect more intense themes and heavier emotional stakes this time around. There are scenes of fantasy and realistic violence, including the return of the flying monkeys, as well as mob aggression, fights, beatings, pistol threats, and a magically created cyclone that results in a character's death (not shown). A character briefly expresses suicidal thoughts, and animals (and Munchkins) face discrimination and loss of rights. Romantic elements include some passionate kisses, caresses, and an implied sex scene—nothing graphic is shown, but a man is seen shirtless, and a woman's shoulders are bare.",
+      "poster_url": "https://www.wickedmovie.com/og_image.jpg"
+    },
+    {
+      "id": 1018,
+      "title": "We Bury the Dead",
+      "description": "We Bury the Dead is a tense zombie horror/drama that follows a woman (Daisy Ridley) who's trying to find her husband after a horrible catastrophe. Expect many scenes of gore and shooting, including survivors shooting zombies.",
+      "poster_url": "https://m.media-amazon.com/images/M/MV5BZTM0MWUzNjMtNjViNS00MWE5LWIwNWYtYTk1Nzg4OWJlNGI4XkEyXkFqcGc@._V1_FMjpg_UX1000_.jpg"
+    },
+    {
+      "id": 1019,
+      "title": "A Time for Bravery",
+      "description": "A Time for Bravery is a Mexican film in Spanish that centers on morally complex characters navigating corruption, justice, and personal responsibility. Mariano (Luis Gerardo Méndez) and Alfredo (Memo Villegas) model empathy, resilience, and growth, but the film includes frequent, intense violence, including shootings, a headshot, strangulation with a belt, beatings, car crashes, and multiple dead bodies.",
+      "poster_url": "https://pic.rutubelist.ru/video/2025-12-30/91/8f/918fd3a2188db70f56898856239f248c.jpg"
+    },
+    {
+      "id": 1020,
+      "title": "No Other Choice",
+      "description": "No Other Choice is a South Korean crime-thriller/comedy directed by Park Chan-wook about a man (Lee Byung-hun) who turns to desperate measures after losing his job. Violence includes guns being used to threaten and shoot, blood sprays, a character being tortured and suffocated, people getting hit with blunt objects, bleeding wounds, and a character physically assaulting his wife because he thinks she's cheated on him. Characters dispose of corpses, there's dialogue about a man beating a stepchild, and more.",
+      "poster_url": "https://i.ytimg.com/vi/ml1ujWkL9fw/maxresdefault.jpg"
+    },
+    {
+      "id": 1021,
+      "title": "The Testament of Ann Lee",
+      "description": "The Testament of Ann Lee is a musical historical biopic about the founder of the Shaker religion, Ann Lee (Amanda Seyfried). Lee, who believed that she was a vessel for God's message, promoted ideas that were considered heretical in the 18th century and would likely still strike many as controversial—that Jesus was gender fluid, that a woman is equally worthy and capable of preaching God's word as a man, that Lee herself was the second coming of Jesus, and that all people are equal and should be treated as such.",
+      "poster_url": "https://s.yimg.com/ny/api/res/1.2/G07hDC12dSdfL87f4kqvKA--/YXBwaWQ9aGlnaGxhbmRlcjt3PTk2MDtoPTU1NztjZj13ZWJw/https://media.zenfs.com/en/gold_derby_993/7a739d070e2f009fd0dd6c4df35a65cd"
+    },
+    {
+      "id": 1024,
+      "title": "The SpongeBob Movie: Search for SquarePants",
+      "description": "The SpongeBob Movie: Search for SquarePants is an animated adventure comedy that follows the famous yellow sponge (voiced by Tom Kenny). Here, he's trying to prove he's not yellow (i.e., scared) during an Odyssey-style quest involving a curse and challenges put forth by the ghost of the Flying Dutchman (Mark Hamill).",
+      "poster_url": "https://images.kinorium.com/movie/shot/10091894/w1500_55148980.jpg"
+    },
+    {
+      "id": 1025,
+      "title": "The Wilderness",
+      "description": "The Wilderness is a tough portrait of an outdoor treatment program for drug-addicted and troubled teens. Characters die, including by suicide, and teenagers experience drug overdoses, severe dehydration, and abuse.",
+      "poster_url": "https://lumiere-a.akamaihd.net/v1/images/g_studio_tronares_ares_galleryposter_6abf30c0.jpeg?region=0%2C0%2C1300%2C730"
+    },
+    {
+      "id": 1026,
+      "title": "The Choral",
+      "description": "The Choral is a historical drama set in England during World War I and stars Ralph Fiennes as Dr. Guthrie, a music teacher who forms a community choir to lift spirits amid devastating loss. The story focuses on those at home—grief-stricken parents, injured soldiers returning from combat (some missing limbs), and families awaiting news from the trenches.",
+      "poster_url": "https://img-s-msn-com.akamaized.net/tenant/amp/entityid/AA1MpFo9.img?w=3840&h=1920&m=4&q=79"
+    },
+    {
+      "id": 1027,
+      "title": "Marty Supreme",
+      "description": "Marty Supreme is writer-director Josh Safdie's 1950s-set sports drama about an ambitious table tennis player (Timothée Chalamet) who's striving for international acclaim.",
+      "poster_url": "https://media.gq-magazine.co.uk/photos/66fbe34b5c9122f0783061d9/16:9/w_1280,c_limit/Timothee-Chalamet-hp.jpg"
+    },
+    {
+      "id": 1028,
+      "title": "Dust Bunny",
+      "description": "Dust Bunny is a fantasy-horror movie about a young girl (Sophie Sloan) who finds a killer monster under her bed and hires a monster hunter (Mads Mikkelsen) to help her dispatch it.",
+      "poster_url": "https://www.thedailybeast.com/resizer/v2/MRV6IOKUMVDAJBXBMKVGQGV4QE.jpg?smart=true&auth=4a90b9a3d776cc16ec2c1ea5c5df336871f8acd3ae79c08f56ece83c9d3dfa59&width=1600&height=900"
+    },
+    {
+      "id": 1029,
+      "title": "Not Without Hope",
+      "description": "Not Without Hope is an intense lost-at-sea survival film based on the true story of four friends stranded on a capsized boat for 43 hours. Expect frequent peril, with deaths (one dead body is shown floating face down in the water for an extended scene), blood, fighting, and frightening storms.",
+      "poster_url": "https://cdn.kino.kz/movies/Not_Without_Hope/p1192x597.webp"
+    },
+    {
+      "id": 1030,
+      "title": "Atropia",
+      "description": "Atropia is a satirical comedy about a military base that simulates wartime activity during the United States' war on terror in the early 2000s. The film follows an aspiring actress (Alia Shawkat) working on the base who develops a relationship with another actor, a real soldier who's portraying an insurgent.",
+      "poster_url": "https://www.kino-teatr.ru/acter/album/63053/1638378.jpg"
+    },
+    {
+      "id": 1031,
+      "title": "Breakdown: 1975",
+      "description": "Breakdown: 1975 is a documentary narrated by Jodie Foster about the year 1975 and how it was particularly amazing in terms of movies. Singling out 1975 as the most important year in cinematic history, this film starts with Watergate and reviews the beginning of New Hollywood, the de-glamorization of American life, and the general attitude of the futility of good intentions.",
+      "poster_url": "https://fwmedia.fandomwire.com/wp-content/uploads/2025/11/25140526/how-many-episodes-in-breakdown-1975-season-1.jpg"
+    },
+    {
+      "id": 1032,
+      "title": "Murder in Monaco",
+      "description": "Murder in Monaco is a crime documentary about the mysterious death of billionaire banker Edmond Safra.",
+      "poster_url": "https://images.justwatch.com/backdrop/339160992/s640/murder-in-monaco"
+    },
+    {
+      "id": 1033,
+      "title": "Chainsaw Man – The Movie: Reze Arc",
+      "description": "Chainsaw Man – The Movie: Reze Arc is the first theatrical movie based on Tatsuki Fujimoto's manga characters; it follows the events of the first season of the Chainsaw Man anime series.",
+      "poster_url": "https://static0.srcdn.com/wordpress/wp-content/uploads/2025/10/denji-chainsaw-man-reze-arc.jpg?q=49&fit=crop&w=825&dpr=2"
+    },
+    {
+      "id": 1034,
+      "title": "Lost in the Spotlight",
+      "description": "Lost in the Spotlight is an Indonesian drama about a famous actor losing his touch that focuses on family, friendship, and personal growth, showing characters learning from their mistakes and working to improve themselves.",
+      "poster_url": "https://images.justwatch.com/backdrop/338363619/s640/lost-in-the-spotlight"
+    },
+    {
+      "id": 1035,
+      "title": "Wake Up Dead Man: A Knives Out Mystery",
+      "description": "Wake Up Dead Man: A Knives Out Mystery is the final film in writer-director Rian Johnson's murder mystery trilogy featuring investigator Benoit Blanc (Daniel Craig). The death that sets the plot into action takes place in the sanctuary of a Catholic church, and Father Jud Duplenticy (Josh O'Connor) is the prime suspect.",
+      "poster_url": "https://static0.cbrimages.com/wordpress/wp-content/uploads/2025/11/wake-up-dead-man-cast.jpg?w=1600&h=900&fit=crop"
+    },
+    {
+      "id": 1036,
+      "title": "Christy",
+      "description": "Christy is a biopic about Christy Martin, the American athlete who put female boxing on the map in the 1990s. Knockouts come easily to Christy (Sydney Sweeney), but—as a lesbian in a time and place in which queer people were often ostracized—advocating for herself doesn't. She disguises this through marriage to a man, taking on the public persona of a sweet homemaker, and calling other female boxers dykes.",
+      "poster_url": "https://www.kino-teatr.ru/movie/kadr/201613/1950475.jpg"
+    },
+    {
+      "id": 1037,
+      "title": "Jay Kelly",
+      "description": "Jay Kelly is director Noah Baumbach's dramedy about a movie star (George Clooney) who's reassessing his life choices. Specifically, he's realizing that he didn't spend enough time with his now-grown children (Grace Edwards, Riley Keough).",
+      "poster_url": "https://s.yimg.com/ny/api/res/1.2/uowc9.buU99O6uCyxxAD.w--/YXBwaWQ9aGlnaGxhbmRlcjt3PTEyNDI7aD02OTk7Y2Y9d2VicA--/https://media.zenfs.com/en/comingsoon_net_477/99c3523a0b4391edc02a3203107bb9b6"
+    },
+    {
+      "id": 1038,
+      "title": "Father Mother Sister Brother",
+      "description": "Father Mother Sister Brother is a three-part comedy-drama that depicts emotionally distant parents, estranged siblings, and messy family relationships. One part centers on orphaned twins Indya Moore and Luka Sabbat reflecting on the loss of both their parents in a plane crash.",
+      "poster_url": "https://static.kinoafisha.info/k/movie_shots/1920x1080/upload/movie_shots/4/5/5/8373554/e48568336aa85c8cf4ef874cf376efd7.jpg"
+    },
+    {
+      "id": 1039,
+      "title": "Song Sung Blue",
+      "description": "Song Sung Blue is writer/director Craig Brewer's drama based on the same-named 2008 documentary about Mike and Claire Sardina (Hugh Jackman and Kate Hudson), a Milwaukee couple who started a popular local Neil Diamond tribute band.",
+      "poster_url": "https://i.ytimg.com/vi/6s-sDwdjXws/maxresdefault.jpg"
+    },
+    {
+      "id": 1040,
+      "title": "Is This Thing On?",
+      "description": "Is This Thing On? is director Bradley Cooper's dramedy about a couple (Will Arnett and Laura Dern) who try to work out their differences after getting divorced.",
+      "poster_url": "https://cdn01.justjared.com/wp-content/uploads/headlines/2025/08/is-this-thing-on-social.jpg"
     }
-	
-	
   ]
 }
