@@ -1,5 +1,5 @@
 {
-  "notif_delay_ms": 60000,
+  "notif_delay_ms": 90000,
   "movie_updates": [
     {
       "id": 1001,
