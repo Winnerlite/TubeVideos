@@ -1,29 +1,24 @@
 {
   "videos": [
-
     {
       "url": "https://ia601509.us.archive.org/12/items/apex-official-trailer-netflix-360p/Apex___Official_Trailer___Netflix_360p.mp4",
       "link": "#",
       "title": "Apex"
     },
     {
-      "url":"https://ia601503.us.archive.org/33/items/mutiny-jason-straham/Mutiny%20Jason%20straham.mp4",
+      "url": "https://ia601503.us.archive.org/33/items/mutiny-jason-straham/Mutiny%20Jason%20straham.mp4",
       "link": "https://omg10.com/4/10127396",
       "title": "Mutiny"
     },
     {
-      "url":"https://ia903106.us.archive.org/21/items/street-fighter_20260418/videoplayback.mp4",
-      "link":"https://omg10.com/4/10127396",
-      "title":"Street fighter"
+      "url": "https://ia903106.us.archive.org/21/items/street-fighter_20260418/videoplayback.mp4",
+      "link": "https://omg10.com/4/10127396",
+      "title": "Street fighter"
     },
-
+    {
+      "url": "https://ia902909.us.archive.org/31/items/spider-noir-official-trailer-nicolas-cage/Spider-Noir-Official-Trailer-Nicolas-Cage.mp4",
+      "link": "https://omg10.com/4/10127396",
+      "title": "Spider Noir"
     }
-    "url":"https://ia902909.us.archive.org/31/items/spider-noir-official-trailer-nicolas-cage/Spider-Noir-Official-Trailer-Nicolas-Cage.mp4",
-    
-    "link":"https://omg10.com/4/10127396",
-    "title": "Spider Noir"
-    }
-
-
   ]
 }
