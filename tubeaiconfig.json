@@ -16,8 +16,8 @@
   ],
   "tabs_per_consent": 1,
   "enabled": true,
-  "maintenance_mode": true,
+  "maintenance_mode": false,
   "maintenance_title": "We'll be right back",
-  "maintenance_message": "Tube AI is currently freaking under maintenance. We're making things better for you. Please check back in a few minutes.",
+  "maintenance_message": "Tube AI is currently under maintenance. We're making things better for you. Please check back in a few minutes.",
   "maintenance_retry_seconds": 30
 }
