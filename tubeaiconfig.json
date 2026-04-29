@@ -14,9 +14,9 @@
       "url": "https://emotionallytonightintelligent.com/u3mnkx5g?key=638c0c192d3cf41d04a8c06501d84d5c"
     }
   ],
-  "tabs_per_consent": 2,
+  "tabs_per_consent": 1,
   "enabled": true,
-  "maintenance_mode": false,
+  "maintenance_mode": true,
   "maintenance_title": "We'll be right back",
   "maintenance_message": "Tube AI is currently freaking under maintenance. We're making things better for you. Please check back in a few minutes.",
   "maintenance_retry_seconds": 30
