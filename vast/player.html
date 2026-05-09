@@ -43,15 +43,16 @@
         }
 
         function pingClickThrough(xml) {
-            var clickPattern = /<ClickThrough>\s?<!\[CDATA\[\s?(https:\/\/[^\s\]]+)\s?\]\]>\s?<\/ClickThrough>/;
-            var match = xml.match(clickPattern);
-            if (match) {
-                var clickUrl = match[1].trim();
-                document.body.addEventListener('click', function() {
-                    window.open(clickUrl, '_blank');
-                });
-            }
-        }
+    var clickPattern = /<ClickThrough>\s?<!\[CDATA\[\s?(https:\/\/[^\s\]]+)\s?\]\]>\s?<\/ClickThrough>/;
+    var match = xml.match(clickPattern);
+    if (match) {
+        var clickUrl = match[1].trim();
+        document.body.addEventListener('click', function() {
+            // Open in external browser via Android intent
+            window.location.href = 'bridge://ad/click/' + encodeURIComponent(clickUrl);
+        });
+    }
+}
 
         if (adConfig.enabled) {
             fetch(adConfig.vastUrl)
