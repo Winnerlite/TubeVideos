@@ -1,5 +1,5 @@
 {
-  "enabled": true,
-  "message": "Vote for tinubu",
-  "level": "error"
+  "enabled": false,
+  "message": "",
+  "level": "info"
 }
