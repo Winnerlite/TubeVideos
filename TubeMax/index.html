@@ -2822,7 +2822,7 @@ body.light-mode .auth-cta p {
 
 
 #watchContent {
-margin-top: 200px;
+margin-top: 210px;
   padding-top: 30px; /* Increase this to push content BELOW the fixed player */
   color: white;
 }
@@ -5025,6 +5025,163 @@ body.light-mode .clear-btn:hover {
         width: 28px;
         height: 28px;
     }
+}
+
+
+/* Movie Poster Overlay */
+.movie-poster-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: #000;
+    z-index: 2001;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    transition: opacity 0.3s ease;
+}
+
+.movie-poster-container {
+    position: relative;
+    width: 90%;
+    max-width: 400px;
+    margin-bottom: 30px;
+    animation: fadeInUp 0.5s ease;
+}
+
+@keyframes fadeInUp {
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.movie-poster-container img {
+    width: 100%;
+    height: auto;
+    border-radius: 12px;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.6);
+}
+
+.play-button {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 70px;
+    height: 70px;
+    background: var(--primary);
+    border: none;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    box-shadow: 0 0 30px var(--glow);
+    z-index: 2;
+}
+
+.play-button:hover,
+.play-button:active {
+    transform: translate(-50%, -50%) scale(1.1);
+    background: var(--primary-dark);
+}
+
+.play-button svg {
+    width: 24px;
+    height: 24px;
+    fill: white;
+    margin-left: 3px;
+}
+
+.movie-title-overlay {
+    color: white;
+    font-size: 20px;
+    font-weight: 600;
+    text-align: center;
+    padding: 0 20px;
+    margin: 0 0 8px 0;
+}
+
+.movie-meta-overlay {
+    color: var(--text-secondary);
+    font-size: 14px;
+    text-align: center;
+}
+
+
+
+/* Movie Poster Overlay - Within Video Container Only */
+.movie-poster-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 250px; /* Match vidsrc player height */
+    background: #000;
+    z-index: 2001;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    transition: opacity 0.3s ease;
+}
+
+.movie-poster-container {
+    position: relative;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: #000;
+}
+
+.movie-poster-container img {
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+    background: #000;
+}
+
+.small-play-button {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 60px;
+    height: 60px;
+    background: var(--primary);
+    border: none;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    box-shadow: 0 0 20px var(--glow);
+    z-index: 2;
+}
+
+.small-play-button:hover,
+.small-play-button:active {
+    transform: translate(-50%, -50%) scale(1.1);
+    background: var(--primary-dark);
+}
+
+.small-play-button svg {
+    width: 22px;
+    height: 22px;
+    fill: white;
+    margin-left: 2px;
 }
     </style>
 </head>
@@ -8533,12 +8690,41 @@ const PROXY_URL = 'https://d1-templatevideo.winnerukoh.workers.dev/';
     </div>
 
     <!-- Actual video container (hidden initially) -->
-    <div id="mainContent" style="display: none;">
-      <div id="videoContainer">
-        <iframe src="${proxyVideoUrl}" 
-            frameborder="0" allowfullscreen
-            style="width: 100%; height: 250px; border-radius: 8px;">
-        </iframe>
+    <div id="videoContainer">
+  <iframe src="${proxyVideoUrl}" 
+      frameborder="0" allowfullscreen
+      style="width: 100%; height: 250px; border-radius: 8px; display: block;">
+  </iframe>
+
+  <div id="posterOverlay" style="
+    position: absolute;
+    top: 0; left: 0;
+    width: 100%; height: 100%;
+    z-index: 10;
+    background: #000;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  ">
+    <img id="posterImg" src="" style="width:100%; height:100%; object-fit:cover; opacity:0.7;">
+    <button onclick="loadVastOverlay()" style="
+      position: absolute;
+      width: 64px; height: 64px;
+      border-radius: 50%;
+      background: var(--primary);
+      border: none;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      box-shadow: 0 0 25px rgba(216,27,96,0.6);
+    ">
+      <svg width="24" height="24" viewBox="0 0 24 24" fill="white">
+        <path d="M8 5v14l11-7z"/>
+      </svg>
+    </button>
+  </div>
+</div>
         <div class="video-helper-note">
           <span class="helper-text show">⚠️If video doesn't load, try again later.</span>
           <span class="helper-text">Looking For Download Links....</span>
@@ -8720,6 +8906,9 @@ const BASE_URL = 'https://api.themoviedb.org/3';
 
 try {
   const res = await fetch(`${BASE_URL}/${type}/${id}?api_key=${API_KEY}&append_to_response=credits,reviews,similar`); const data = await res.json();
+
+
+document.getElementById('posterImg').src = `https://image.tmdb.org/t/p/w500${data.backdrop_path || data.poster_path || ''}`;
 
   const title = data.title || data.name || "Untitled";
   const thumbnail = data.poster_path ? `https://image.tmdb.org/t/p/w200${data.poster_path}` : '';
@@ -10784,6 +10973,94 @@ document.addEventListener('DOMContentLoaded', function() {
   });
   observer.observe(mePage, { attributes: true, attributeFilter: ['class'] });
 });
+
+
+// Show movie poster overlay within the video container only
+function showMoviePosterOverlay(movieData) {
+    // Get the video container
+    const videoContainer = document.getElementById('videoContainer');
+    if (!videoContainer) return;
+    
+    // Remove any existing overlay
+    removeMovieOverlay();
+    
+    // Make sure video container has relative positioning
+    videoContainer.style.position = 'relative';
+    
+    const overlayHTML = `
+        <div class="movie-poster-overlay" id="moviePosterOverlay">
+            <div class="movie-poster-container">
+                <img src="${movieData.poster || 'data:image/svg+xml;base64,PHN2ZyB3aWR0aD0nNDAwJyBoZWlnaHQ9JzI1MCcgeG1sbnM9J2h0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnJz48cmVjdCB3aWR0aD0nNDAwJyBoZWlnaHQ9JzI1MCcgZmlsbD0nIzMzMycgLz48dGV4dCB4PScyMDAnIHk9JzEzMCcgZm9udC1zaXplPScxNicgZmlsbD0nIzk5OScgdGV4dC1hbmNob3I9J21pZGRsZSc+Tm8gUG9zdGVyPC90ZXh0Pjwvc3ZnPg=='}" 
+                     alt="${movieData.title || 'Movie'}"
+                     onerror="this.src='data:image/svg+xml;base64,PHN2ZyB3aWR0aD0nNDAwJyBoZWlnaHQ9JzI1MCcgeG1sbnM9J2h0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnJz48cmVjdCB3aWR0aD0nNDAwJyBoZWlnaHQ9JzI1MCcgZmlsbD0nIzMzMycgLz48dGV4dCB4PScyMDAnIHk9JzEzMCcgZm9udC1zaXplPScxNicgZmlsbD0nIzk5OScgdGV4dC1hbmNob3I9J21pZGRsZSc+Tm8gUG9zdGVyPC90ZXh0Pjwvc3ZnPg=='">
+                <button class="small-play-button" onclick="loadVastPlayerInContainer()" title="Play">
+                    <svg viewBox="0 0 24 24">
+                        <path d="M8 5v14l11-7z"/>
+                    </svg>
+                </button>
+            </div>
+        </div>
+    `;
+    
+    videoContainer.insertAdjacentHTML('afterbegin', overlayHTML);
+}
+
+// Load Vast Player within the video container
+function loadVastPlayerInContainer() {
+    const overlay = document.getElementById('moviePosterOverlay');
+    if (!overlay) return;
+    
+    // Replace overlay with Vast Player iframe - same size as vidsrc
+    overlay.innerHTML = `
+        <iframe 
+            src="https://vastrailer.netlify.app" 
+            style="width: 100%; height: 100%; border: none;"
+            allow="autoplay"
+            allowfullscreen>
+        </iframe>
+    `;
+    
+    // Optional: Auto-remove after maximum time (fallback)
+    setTimeout(() => {
+        removeMovieOverlay();
+    }, 120000); // 2 minutes max
+}
+
+// Remove overlay only from video container
+function removeMovieOverlay() {
+    const overlay = document.getElementById('moviePosterOverlay');
+    if (overlay) {
+        overlay.style.opacity = '0';
+        setTimeout(() => overlay.remove(), 300);
+    }
+}
+
+
+
+function loadVastOverlay() {
+  const container = document.getElementById('videoContainer');
+  if (!container) return;
+
+  // Remove poster overlay
+  const poster = document.getElementById('posterOverlay');
+  if (poster) poster.remove();
+
+  // Inject vast iframe on top of vidsrc
+  const vastIframe = document.createElement('iframe');
+  vastIframe.src = 'https://vastrailer.netlify.app';
+  vastIframe.id = 'vastOverlay';
+  vastIframe.allow = 'autoplay';
+  vastIframe.allowFullscreen = true;
+  vastIframe.style.cssText = `
+    position: absolute;
+    top: 0; left: 0;
+    width: 100%; height: 100%;
+    border: none;
+    z-index: 20;
+  `;
+
+  container.appendChild(vastIframe);
+}
 </script>
 <!-- Now Playing Popup -->
 <div id="nowPlayingPopup" class="now-playing-popup">
