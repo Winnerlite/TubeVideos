@@ -1,0 +1,48 @@
+MESSENGER BANNER - COLOR REFERENCE
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+LEVEL        | COLOR NAME    | HEX CODE     | USE FOR
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+info         | Blue          | #2196F3      | General updates, new features, announcements
+warning      | Orange        | #FF9800      | Known issues, maintenance, degraded service
+error        | Red           | #F44336      | Critical bugs, service down, broken features
+success      | Green         | #4CAF50      | Issue resolved, feature launched, service restored
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+
+JSON FORMAT:
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+{
+  "enabled": true,
+  "message": "Your message here",
+  "level": "info"
+}
+
+
+EXAMPLES:
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+MP3 broken:
+{ "enabled": true, "message": "MP3 downloads temporarily unavailable. Fix coming soon!", "level": "warning" }
+
+New feature launched:
+{ "enabled": true, "message": "AI Common Sense now available on movie pages!", "level": "info" }
+
+Critical bug:
+{ "enabled": true, "message": "Video playback may be slow. We're working on it.", "level": "error" }
+
+Issue fixed:
+{ "enabled": true, "message": "MP3 downloads are back! Thanks for your patience.", "level": "success" }
+
+Disable banner (hide from all users):
+{ "enabled": false, "message": "", "level": "info" }
+
+
+NOTES:
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+- Changes take effect within 60 seconds on all devices
+- Users can dismiss the banner by tapping the "✕"
+- Dismissed banner reappears on next app launch if still enabled
+- Leave "message" empty or set "enabled" to false to hide the banner
