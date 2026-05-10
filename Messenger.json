@@ -1,5 +1,5 @@
 {
-  "enabled": false,
+  "enabled": true,
   "message": "Welcome to Tubetrailer, take a moment to explore the app",
   "level": "info"
 }
