@@ -11044,7 +11044,6 @@ function loadVastOverlay() {
   const poster = document.getElementById('posterOverlay');
   if (poster) poster.remove();
 
-  // Vast iframe - no blocker needed, postMessage handles everything
   const vastIframe = document.createElement('iframe');
   vastIframe.src = 'https://playerhtmlweb.netlify.app';
   vastIframe.id = 'vastOverlay';
@@ -11058,7 +11057,6 @@ function loadVastOverlay() {
   `;
   container.appendChild(vastIframe);
 
-  // Listen for messages from vast iframe
   function handleVastMessage(e) {
     if (e.data === 'vastSkip') {
       document.getElementById('vastOverlay')?.remove();
@@ -11066,9 +11064,9 @@ function loadVastOverlay() {
     }
 
     if (e.data?.type === 'vastClick') {
-    // Navigate main frame so Java's shouldOverrideUrlLoading catches it
-    window.location.href = 'bridge://ad/click/' + encodeURIComponent(e.data.url);
-
+      if (typeof AndroidInterface !== 'undefined') {
+        AndroidInterface.openAdBrowser(e.data.url);
+      }
     }
   }
 
