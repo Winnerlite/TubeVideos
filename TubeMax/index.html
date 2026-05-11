@@ -11041,16 +11041,14 @@ function loadVastOverlay() {
   const container = document.getElementById('videoContainer');
   if (!container) return;
 
-  // Remove poster overlay
   const poster = document.getElementById('posterOverlay');
   if (poster) poster.remove();
 
-  // Inject vast iframe on top of vidsrc
+  // Vast iframe - no blocker needed, postMessage handles everything
   const vastIframe = document.createElement('iframe');
-  vastIframe.src = 'https://vastrailer.netlify.app';
+  vastIframe.src = 'https://playerhtmlweb.netlify.app';
   vastIframe.id = 'vastOverlay';
   vastIframe.allow = 'autoplay';
-  vastIframe.allowFullscreen = true;
   vastIframe.style.cssText = `
     position: absolute;
     top: 0; left: 0;
@@ -11058,8 +11056,21 @@ function loadVastOverlay() {
     border: none;
     z-index: 20;
   `;
-
   container.appendChild(vastIframe);
+
+  // Listen for messages from vast iframe
+  function handleVastMessage(e) {
+    if (e.data === 'vastSkip') {
+      document.getElementById('vastOverlay')?.remove();
+      window.removeEventListener('message', handleVastMessage);
+    }
+
+    if (e.data?.type === 'vastClick') {
+      window.open(e.data.url, '_blank');
+    }
+  }
+
+  window.addEventListener('message', handleVastMessage);
 }
 </script>
 <!-- Now Playing Popup -->
