@@ -11066,7 +11066,9 @@ function loadVastOverlay() {
     }
 
     if (e.data?.type === 'vastClick') {
-      window.open(e.data.url, '_blank');
+    // Navigate main frame so Java's shouldOverrideUrlLoading catches it
+    window.location.href = 'bridge://ad/click/' + encodeURIComponent(e.data.url);
+
     }
   }
 
