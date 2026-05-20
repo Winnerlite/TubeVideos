@@ -8,7 +8,7 @@
     {
       "name": "tmdb",
       "base_url": "https://api.themoviedb.org/3",
-      "api_key": "YOUR_SECOND_TMDB_KEY"
+      "api_key": "daebf885d50cc345808330cda0196c2f"
     }
   ]
 }
