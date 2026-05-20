@@ -1,7 +1,10 @@
 {
     "vidsrc_urls": [
         "https://vidsrc.to/embed/movie/",
-        "https://vidlink.pro/movie/",
-        "https://vidsrc.net/embed/movie/"
+        "https://vidlink.pro/movie/"
+    ],
+    "vidsrc_tv_urls": [
+        "https://vidsrc.to/embed/tv/",
+        "https://vidlink.pro/tv/"
     ]
 }
