@@ -1,10 +1,14 @@
 {
     "vidsrc_urls": [
         "https://vidsrc.to/embed/movie/",
+        "https://vsembed.ru/embed/movie/",
+        "https://vsembed.su/embed/movie/",
         "https://vidlink.pro/movie/"
     ],
     "vidsrc_tv_urls": [
         "https://vidsrc.to/embed/tv/",
+        "https://vsembed.ru/embed/tv/",
+        "https://vsembed.su/embed/tv/",
         "https://vidlink.pro/tv/"
     ]
 }
