@@ -1,5 +1,5 @@
 {
-  "enabled": false,
+  "enabled": true,
   "message": "The movie service is under maintenance, Movie might not load for you. it wil be back up soon",
   "level": "warning"
 }
