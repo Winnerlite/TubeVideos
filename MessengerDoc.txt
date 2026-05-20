@@ -46,3 +46,17 @@ NOTES:
 - Users can dismiss the banner by tapping the "✕"
 - Dismissed banner reappears on next app launch if still enabled
 - Leave "message" empty or set "enabled" to false to hide the banner
+
+
+
+// Show ONLY on 10.12 (a single version)
+{ "minVersion": "10.12", "maxVersion": "10.12" }
+
+// Show on 10.11 and below (old versions)
+{ "minVersion": "", "maxVersion": "10.11" }
+
+// Show on everyone (no version filter)
+{ "minVersion": "", "maxVersion": "" }
+
+// Show between 10.11 and 10.13 (a range)
+{ "minVersion": "10.11", "maxVersion": "10.13" }
