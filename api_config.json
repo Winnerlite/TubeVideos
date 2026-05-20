@@ -1,0 +1,16 @@
+{
+  "movie_apis": [
+    {
+      "name": "tmdb",
+      "base_url": "https://api.themoviedb.org/3",
+      "api_key": "c9ae6d71a995e7c08499bd3a5c891052",
+      "enabled": true
+    },
+    {
+      "name": "imdb",
+      "base_url": "https://imdb-api.com/en/API",
+      "api_key": "YOUR_IMDB_API_KEY",
+      "enabled": true
+    }
+  ]
+}
