@@ -1,5 +1,7 @@
 {
-  "enabled": true,
-  "message": "The movie service is under maintenance, Movie might not load for you. it wil be back up soon",
-  "level": "warning"
+    "enabled": true,
+    "message": "The movie service is under maintenance, movies might not load for you. It will be back up soon.",
+    "level": "warning",
+    "minVersion": "",
+    "maxVersion": "10.11"
 }
