@@ -1,6 +1,7 @@
 {
-    "vidsrc_url": "https://vidsrc.to/embed/movie/",
-    "vidsrc_fallback_url": "https://vidlink.pro/movie/",
-    "vidsrc_tv_url": "https://vidsrc.to/embed/tv/",
-    "vidsrc_tv_fallback_url": "https://vidlink.pro/tv/"
+    "vidsrc_urls": [
+        "https://vidsrc.to/embed/movie/",
+        "https://vidlink.pro/movie/",
+        "https://vidsrc.net/embed/movie/"
+    ]
 }
