@@ -1,6 +1,6 @@
 {
     "enabled": true,
-    "message": "The movie service is under maintenance, movies might not load for you. It will be back up soon.",
+    "message": " App Update Available: Check for Update",
     "level": "warning",
     "minVersion": "",
     "maxVersion": "10.11"
