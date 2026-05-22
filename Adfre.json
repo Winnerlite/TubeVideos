@@ -1,6 +1,5 @@
 {
     "enabled": true,
-    "message": "Ad-free mode is temporarily unavailable. Please try again later.",
-    "max_hours_per_day": 1,
-    "require_email_verified": false
+    "message": "Ad-free mode is temporarily unavailable. Please try again later."
+    
 }
