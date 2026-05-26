@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <!--verification for monidiad-->
+  <meta name="mnd-ver" content="lkcfdijid2zgol1e8yolg" />
+  
+  
+  
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tube — Free Movie & TV Streaming</title>
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body { background: #0a0a0a; color: #fff; font-family: 'Segoe UI', Arial, sans-serif; display: flex; justify-content: center; align-items: center; min-height: 100vh; padding: 20px; }
+        .container { width: 100%; max-width: 900px; text-align: center; }
+        .video-wrapper { position: relative; width: 100%; padding-bottom: 56.25%; background: #000; border-radius: 12px; overflow: hidden; margin-bottom: 30px; border: 2px solid #D81B60; }
+        .video-wrapper iframe { position: absolute; top: 0; left: 0; width: 100%; height: 100%; border: 0; }
+        h1 { color: #D81B60; font-size: 2rem; margin-bottom: 10px; }
+        p { color: #888; font-size: 1rem; margin-bottom: 25px; }
+        .btn { display: inline-block; background: #D81B60; color: #fff; padding: 14px 32px; border-radius: 30px; text-decoration: none; font-weight: bold; font-size: 1rem; transition: background 0.3s; margin-bottom: 30px; }
+        .btn:hover { background: #b0154d; }
+        .video-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(160px, 1fr)); gap: 12px; margin: 0; }
+        .video-card { background: #1a1a1a; border-radius: 8px; padding: 8px; cursor: pointer; transition: transform 0.2s; text-align: left; }
+        .video-card:hover { transform: scale(1.03); border: 1px solid #D81B60; }
+        .video-card img { width: 100%; border-radius: 6px; aspect-ratio: 16/9; object-fit: cover; }
+        .video-card .title { font-size: 0.75rem; margin-top: 6px; color: #ccc; display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; overflow: hidden; }
+        .selected { border: 2px solid #D81B60; }
+        .loading { padding: 30px; color: #888; }
+        .section-label { color: #D81B60; font-size: 1.2rem; margin: 20px 0 12px; text-align: left; }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Tube</h1>
+        <p>Free Movie & TV Streaming</p>
+
+        <div class="video-wrapper">
+            <iframe id="main-video" src="" allow="autoplay; fullscreen" allowfullscreen></iframe>
+        </div>
+
+        <a href="https://winnerlite.github.io/TubeVideos/TubeMax/index.html" class="btn">See More Movies →</a>
+
+        <div class="section-label">🔥 Trending Trailers</div>
+        <div class="video-grid" id="video-grid"></div>
+    </div>
+
+    <script>
+        const WORKER_URL = 'https://tubetrailerpro.ukowills.workers.dev/explore';
+        const grid = document.getElementById('video-grid');
+        const mainVideo = document.getElementById('main-video');
+
+        async function loadVideos() {
+            grid.innerHTML = '<div class="loading">Loading trailers...</div>';
+            try {
+                const res = await fetch(WORKER_URL);
+                const data = await res.json();
+                const trailers = (data.trailers || []).slice(0, 15);
+
+                grid.innerHTML = '';
+
+                if (trailers.length > 0) {
+                    // Play first video
+                    const firstId = trailers[0].id.videoId;
+                    mainVideo.src = 'https://www.youtube.com/embed/' + firstId + '?autoplay=1&mute=1&rel=0';
+                }
+
+                trailers.forEach((video, index) => {
+                    const videoId = video.id.videoId;
+                    const title = video.snippet.title.replace(/&amp;/g, '&');
+                    const thumbnail = video.snippet.thumbnails.medium.url;
+
+                    const card = document.createElement('div');
+                    card.className = 'video-card' + (index === 0 ? ' selected' : '');
+                    card.innerHTML = `
+                        <img src="${thumbnail}" alt="${title}" />
+                        <div class="title">${title}</div>
+                    `;
+                    card.onclick = () => {
+                        mainVideo.src = 'https://www.youtube.com/embed/' + videoId + '?autoplay=1&rel=0';
+                        document.querySelectorAll('.video-card').forEach(c => c.classList.remove('selected'));
+                        card.classList.add('selected');
+                        window.scrollTo({ top: 0, behavior: 'smooth' });
+                    };
+                    grid.appendChild(card);
+                });
+            } catch (e) {
+                grid.innerHTML = '<div class="loading">Could not load trailers. Try again later.</div>';
+            }
+        }
+
+        loadVideos();
+    </script>
+</body>
+</html>
