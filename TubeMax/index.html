@@ -1,6 +1,15 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+  
+<!--banner and delivery -->
+<script async src="https://ss.mrmnd.com/banner.js"></script>
+
+<script async src="https://ss.mrmnd.com/interstitial.js" data-mndintid="08067ba8-29fb-4de9-b663-bb07ec70486a"></script>
+
+
+<!--banner and deli-->
+<script async src="https://ss.mrmnd.com/native.js"></script>
 
  <meta name="mnd-ver" content="lkcfdijid2zgol1e8yolg" />
 
@@ -5299,9 +5308,12 @@ body.light-mode .clear-btn:hover {
             </div>
             <div id="trailerSection">
                 <h2 class="section-title">Top Trailers</h2>
+                <div data-mndazid="5ffddc88-2cde-4ac3-a17e-cd5594230127"></div>
                 <div class="results-container" id="trailerResults"></div>
             </div>
 
+<!-- native banner-->
+<div data-mndazid="5ffddc88-2cde-4ac3-a17e-cd5594230127"></div>
            
             <div id="moviesSection">
                 <h2 class="section-title">Top Movies</h2>
@@ -5414,6 +5426,8 @@ body.light-mode .clear-btn:hover {
             </div>
         </div>
         
+        <!-- banner native-->
+        <div data-mndazid="5ffddc88-2cde-4ac3-a17e-cd5594230127"></div>
         <!-- Related Videos Section -->
         <div class="related-videos">
             <h2 class="related-title">Related Videos</h2>
@@ -8974,6 +8988,7 @@ setTimeout(() => {
       reviewHTML += `</div>`;
       wrapper.insertAdjacentHTML('beforeend', reviewHTML);
     }
+    
 
     // Related content
     const related = data.similar?.results?.slice(0, 10) || [];
