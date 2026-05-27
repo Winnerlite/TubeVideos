@@ -1,190 +1,158 @@
-// youtube_scraper.js - YouTube Scraping Logic
-// Version: 1.0.0
-// This script handles YouTube data extraction
+// YouTube Scraper - Version 1.0.0
+// Host this file on GitHub to enable remote updates
+// This extracts long-form videos and shorts from YouTube mobile search results
 
-const YouTubeScraper = (function() {
+const YouTubeAutomation = (function() {
     'use strict';
     
-    // Configuration
-    const CONFIG = {
-        USER_AGENT: 'Mozilla/5.0 (Linux; Android 10; K) AppleWebKit/537.36',
-        TIMEOUT: 10000,
-        MAX_RETRIES: 3,
-        CACHE_DURATION: 300000 // 5 minutes
-    };
+    const MAX_LONG_FORM = 60;
+    const SCROLL_DELAY = 2000;
     
-    // Main scraping function
-    function scrapeYouTubeData(url, callback) {
-        try {
-            const videoId = extractVideoId(url);
-            if (!videoId) {
-                callback({ error: 'Invalid YouTube URL' });
-                return;
-            }
-            
-            fetchVideoInfo(videoId, callback);
-        } catch (error) {
-            callback({ error: error.message });
-        }
-    }
-    
-    // Extract video ID from various YouTube URL formats
-    function extractVideoId(url) {
-        const patterns = [
-            /(?:youtube\.com\/watch\?v=|youtu\.be\/|youtube\.com\/embed\/|youtube\.com\/v\/)([^&\n?#]+)/,
-            /youtube\.com\/shorts\/([^&\n?#]+)/,
-            /youtube\.com\/live\/([^&\n?#]+)/
-        ];
+    // Step 0: Initiate search
+    function performSearch(searchTerm) {
+        const safeTerm = JSON.stringify(searchTerm);
         
-        for (const pattern of patterns) {
-            const match = url.match(pattern);
-            if (match && match[1]) {
-                return match[1];
-            }
-        }
-        return null;
-    }
-    
-    // Fetch video information
-    function fetchVideoInfo(videoId, callback) {
-        // Build the request
-        const requestBody = buildYouTubeRequest(videoId);
+        const script = `
+            (function(){
+                var input = document.querySelector('input[name="search_query"]');
+                if(input) {
+                    input.value = ${safeTerm};
+                    var btn = document.querySelector('button[aria-label="Search"]');
+                    if(btn) btn.click(); 
+                    else if(input.form) input.form.submit();
+                    return 'OK';
+                }
+                return 'WAIT';
+            })();
+        `;
         
-        // Simulated network request (in Android, this would be an actual HTTP call)
-        // In practice, you'd use Android's HttpURLConnection or OkHttp
-        
-        const requestConfig = {
-            url: 'https://www.youtube.com/youtubei/v1/player?key=AIzaSyAO_FJ2SlqU8Q4STEHLGCilw_Y9_11qcW8',
-            method: 'POST',
-            headers: {
-                'User-Agent': CONFIG.USER_AGENT,
-                'Content-Type': 'application/json',
-                'Accept-Language': 'en-US,en;q=0.9'
+        return {
+            step: 0,
+            script: script,
+            successCheck: function(result) {
+                return result && result.includes('OK');
             },
-            body: JSON.stringify(requestBody)
+            delay: 1000
         };
-        
-        // This is the core scraping logic that can be updated remotely
-        processYouTubeResponse = function(responseText) {
-            try {
-                const data = JSON.parse(responseText);
-                const videoDetails = extractVideoDetails(data);
-                const streamingData = extractStreamingData(data);
+    }
+    
+    // Step 1: Scroll and extract
+    function scrollAndExtract() {
+        const script = `
+            (function(){
+                /* Trigger lazy loading */
+                window.scrollTo(0, document.body.scrollHeight);
                 
-                callback({
-                    success: true,
-                    videoId: videoId,
-                    details: videoDetails,
-                    streams: streamingData,
-                    thumbnail: videoDetails.thumbnails ? videoDetails.thumbnails[0] : null
-                });
-            } catch (error) {
-                callback({ error: 'Failed to parse video data: ' + error.message });
-            }
-        };
-        
-        return requestConfig;
-    }
-    
-    // Build the YouTube API request body
-    function buildYouTubeRequest(videoId) {
-        return {
-            context: {
-                client: {
-                    hl: 'en',
-                    gl: 'US',
-                    clientName: 'ANDROID',
-                    clientVersion: '17.31.35',
-                    androidSdkVersion: 30,
-                    userAgent: CONFIG.USER_AGENT,
-                    osName: 'Android',
-                    osVersion: '10.0',
-                    platform: 'MOBILE'
+                /* Identify video elements */
+                var longFormItems = document.querySelectorAll(
+                    'ytm-video-with-context-renderer, ytm-compact-video-renderer'
+                );
+                var shortsItems = document.querySelectorAll('ytm-reel-item-renderer');
+                
+                /* Check if we have enough long-form videos */
+                if (longFormItems.length < ${MAX_LONG_FORM}) {
+                    return 'NEED_MORE_' + longFormItems.length;
                 }
+                
+                /* Extract videos */
+                var finalResults = [];
+                
+                /* Long-form videos */
+                for(var i = 0; i < longFormItems.length; i++) {
+                    var titleEl = longFormItems[i].querySelector('h3, .media-item-metadata-title');
+                    var linkEl = longFormItems[i].querySelector('a');
+                    var thumbEl = longFormItems[i].querySelector('img');
+                    var durationEl = longFormItems[i].querySelector('.video-badge-label, .ytm-badge-and-byline-item-byline');
+                    var viewsEl = longFormItems[i].querySelector('.ytm-badge-and-byline-item-byline');
+                    
+                    if(titleEl && linkEl) {
+                        var videoData = {
+                            type: 'VIDEO',
+                            title: titleEl.innerText.trim(),
+                            link: linkEl.href,
+                            thumb: thumbEl ? thumbEl.src : '',
+                            duration: durationEl ? durationEl.innerText.trim() : '',
+                            views: viewsEl ? viewsEl.innerText.trim() : ''
+                        };
+                        
+                        // Skip duplicates
+                        if (!finalResults.find(function(item) { return item.link === videoData.link; })) {
+                            finalResults.push(videoData);
+                        }
+                    }
+                }
+                
+                /* Shorts */
+                for(var j = 0; j < shortsItems.length; j++) {
+                    var sLinkEl = shortsItems[j].querySelector('a');
+                    var sThumbEl = shortsItems[j].querySelector('img');
+                    var sTitleEl = shortsItems[j].querySelector('.reel-item-endpoint');
+                    var sViewsEl = shortsItems[j].querySelector('.reel-item-metadata');
+                    
+                    if(sLinkEl) {
+                        var shortData = {
+                            type: 'SHORT',
+                            title: sTitleEl ? (sTitleEl.getAttribute('aria-label') || 'YouTube Short') : 'YouTube Short',
+                            link: sLinkEl.href,
+                            thumb: sThumbEl ? sThumbEl.src : '',
+                            views: sViewsEl ? sViewsEl.innerText.trim() : ''
+                        };
+                        
+                        if (!finalResults.find(function(item) { return item.link === shortData.link; })) {
+                            finalResults.push(shortData);
+                        }
+                    }
+                }
+                
+                return JSON.stringify(finalResults);
+            })();
+        `;
+        
+        return {
+            step: 1,
+            script: script,
+            successCheck: function(result) {
+                return result && !result.includes('NEED_MORE') && result.length > 20;
             },
-            videoId: videoId,
-            playbackContext: {
-                contentPlaybackContext: {
-                    signatureTimestamp: 20000
+            needsMore: function(result) {
+                return result && result.includes('NEED_MORE');
+            },
+            extractCount: function(result) {
+                if (result && result.includes('NEED_MORE_')) {
+                    return result.replace(/["']/g, '').replace('NEED_MORE_', '');
                 }
-            }
+                return '0';
+            },
+            delay: SCROLL_DELAY
         };
     }
     
-    // Extract video details from API response
-    function extractVideoDetails(data) {
-        const videoDetails = data.videoDetails || {};
-        return {
-            title: videoDetails.title || '',
-            author: videoDetails.author || '',
-            lengthSeconds: videoDetails.lengthSeconds || '0',
-            viewCount: videoDetails.viewCount || '0',
-            thumbnails: videoDetails.thumbnail?.thumbnails || [],
-            isLive: videoDetails.isLive || false,
-            description: videoDetails.shortDescription || ''
-        };
-    }
-    
-    // Extract streaming data (formats)
-    function extractStreamingData(data) {
-        const formats = [];
-        const adaptiveFormats = [];
-        
-        // Extract regular formats
-        if (data.streamingData && data.streamingData.formats) {
-            data.streamingData.formats.forEach(format => {
-                formats.push({
-                    itag: format.itag,
-                    url: format.url,
-                    mimeType: format.mimeType,
-                    bitrate: format.bitrate,
-                    width: format.width,
-                    height: format.height,
-                    contentLength: format.contentLength,
-                    quality: format.quality,
-                    qualityLabel: format.qualityLabel,
-                    audioQuality: format.audioQuality,
-                    approxDurationMs: format.approxDurationMs
+    // Get current state info
+    function getPageInfo() {
+        const script = `
+            (function(){
+                return JSON.stringify({
+                    url: window.location.href,
+                    title: document.title,
+                    readyState: document.readyState,
+                    videoCount: document.querySelectorAll(
+                        'ytm-video-with-context-renderer, ytm-compact-video-renderer'
+                    ).length,
+                    shortsCount: document.querySelectorAll('ytm-reel-item-renderer').length
                 });
-            });
-        }
-        
-        // Extract adaptive formats
-        if (data.streamingData && data.streamingData.adaptiveFormats) {
-            data.streamingData.adaptiveFormats.forEach(format => {
-                adaptiveFormats.push({
-                    itag: format.itag,
-                    url: format.url,
-                    mimeType: format.mimeType,
-                    bitrate: format.bitrate,
-                    width: format.width,
-                    height: format.height,
-                    contentLength: format.contentLength,
-                    quality: format.quality,
-                    qualityLabel: format.qualityLabel
-                });
-            });
-        }
+            })();
+        `;
         
         return {
-            formats: formats,
-            adaptiveFormats: adaptiveFormats,
-            expiresInSeconds: data.streamingData?.expiresInSeconds || '0'
+            script: script,
+            isInfo: true
         };
     }
     
-    // Process player response (this function will be replaced by remote code)
-    let processYouTubeResponse = null;
-    
-    // Public API
     return {
-        scrapeYouTubeData: scrapeYouTubeData,
-        extractVideoId: extractVideoId,
-        CONFIG: CONFIG
+        performSearch: performSearch,
+        scrollAndExtract: scrollAndExtract,
+        getPageInfo: getPageInfo,
+        MAX_LONG_FORM: MAX_LONG_FORM
     };
 })();
-
-// Export for Android WebView usage
-if (typeof module !== 'undefined' && module.exports) {
-    module.exports = YouTubeScraper;
-}
