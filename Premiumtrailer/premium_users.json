@@ -2,7 +2,7 @@
     "activation_code": "TUBE-PREM-AAAA-BBBB",
     "premium_emails": [
         {"email": "winnerukoh@gmail.com", "expiry": "lifetime"},
-        {"email": "tubetrailer@yahoo.com", "expiry": "lifetime"},
+
         {"email": "customer@gmail.com", "expiry": "2026-06-28"}
     ]
 }
