@@ -1,19 +1,19 @@
 {
-    "enabled": false,
+    "enabled": true,
     "ads": [
         {
-            "title": "Premium VPN Deal",
+            "title": "Watch Vidoes/Earn Cash",
             "description": "Get 80% off today",
-            "image": "https://i.ibb.co/F4MgWF6f/image-4.jpg",
-            "button_text": "Naruto Fire",
-            "click_url": "https://example.com/offer1"
+            "image": "https://i.ibb.co/tpPPVZFC/file-00000000a208720c83074c40e7c34a36.png",
+            "button_text": "Open and Access",
+            "click_url": "https://efunnel.edgeone.app"
         },
         {
-            "title": "Free Streaming",
+            "title": "Watch Videos,Make money",
             "description": "Watch movies free",
-            "image": "https://example.com/ad2.jpg",
+            "image": "https://i.ibb.co/MkvS13ZJ/file-00000000b888720c8d37d79d167fd38a.png",
             "button_text": "Try Now",
-            "click_url": "https://example.com/offer2"
+            "click_url": "https://efunnel.edgeone.app"
         }
     ]
 }
