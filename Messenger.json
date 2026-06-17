@@ -1,7 +1,7 @@
 {
     "enabled": true,
-    "message": " App Update Available: Check for Update",
+    "message": "App Update Available: Check for Update",
     "level": "info",
     "minVersion": "",
-    "maxVersion": "10.11"
+    "maxVersion": "10.15"
 }
