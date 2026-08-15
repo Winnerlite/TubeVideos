@@ -1,5 +1,5 @@
 {
-    "enabled": true,
+    "enabled": false,
     "message": "We know that some features isn't working, we are working to fix them",
     "level": "info",
     "minVersion": "",
