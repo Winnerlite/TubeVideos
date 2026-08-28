@@ -2,7 +2,7 @@
   "videos": [
     {
       "url": "https://ia801406.us.archive.org/31/items/marvel-televisions-vision-quest-official-trailer-360p/Marvel_Television%E2%80%99s_VisionQuest___Official_Trailer%28360p%29.mp4",
-      "link": "https://www.google.com",
+      "link": "#",
       "title": "marvel vision quest",
       "cta_text": "watch now"
     },
@@ -14,13 +14,13 @@
     },
     {
       "url": "https://ia601503.us.archive.org/33/items/mutiny-jason-straham/Mutiny%20Jason%20straham.mp4",
-      "link": "https://www.google.com",
+      "link": "#",
       "title": "Mutiny",
       "cta_text": "watch now"
     },
     {
       "url": "https://ia903106.us.archive.org/21/items/street-fighter_20260418/videoplayback.mp4",
-      "link": "https://www.google.com",
+      "link": "#",
       "title": "Street fighter",
       "cta_text": "watch now"
     }
