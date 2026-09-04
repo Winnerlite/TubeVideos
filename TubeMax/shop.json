@@ -1,0 +1,68 @@
+{
+  "products": [
+    {
+      "id": 1,
+      "name": "Dune: Part Two Poster",
+      "price": "$24.99",
+      "image": "https://via.placeholder.com/300x400/1a1a2e/white?text=Dune+Poster",
+      "link": "https://www.amazon.com/dp/example1",
+      "category": "Posters"
+    },
+    {
+      "id": 2,
+      "name": "Oppenheimer T-Shirt",
+      "price": "$29.99",
+      "image": "https://via.placeholder.com/300x400/1a1a2e/white?text=Oppenheimer",
+      "link": "https://www.amazon.com/dp/example2",
+      "category": "Apparel"
+    },
+    {
+      "id": 3,
+      "name": "Barbie Collectible",
+      "price": "$34.99",
+      "image": "https://via.placeholder.com/300x400/1a1a2e/white?text=Barbie",
+      "link": "https://www.amazon.com/dp/example3",
+      "category": "Collectibles"
+    },
+    {
+      "id": 4,
+      "name": "Spider-Verse Art Book",
+      "price": "$39.99",
+      "image": "https://via.placeholder.com/300x400/1a1a2e/white?text=Spider-Verse",
+      "link": "https://www.amazon.com/dp/example4",
+      "category": "Books"
+    },
+    {
+      "id": 5,
+      "name": "The Batman Figure",
+      "price": "$49.99",
+      "image": "https://via.placeholder.com/300x400/1a1a2e/white?text=Batman",
+      "link": "https://www.amazon.com/dp/example5",
+      "category": "Collectibles"
+    },
+    {
+      "id": 6,
+      "name": "Studio Ghibli Mug",
+      "price": "$19.99",
+      "image": "https://via.placeholder.com/300x400/1a1a2e/white?text=Ghibli",
+      "link": "https://www.amazon.com/dp/example6",
+      "category": "Merchandise"
+    },
+    {
+      "id": 7,
+      "name": "Interstellar Vinyl Soundtrack",
+      "price": "$44.99",
+      "image": "https://via.placeholder.com/300x400/1a1a2e/white?text=Interstellar",
+      "link": "https://www.amazon.com/dp/example7",
+      "category": "Music"
+    },
+    {
+      "id": 8,
+      "name": "Marvel Studios: The Art Book",
+      "price": "$59.99",
+      "image": "https://via.placeholder.com/300x400/1a1a2e/white?text=Marvel+Art",
+      "link": "https://www.amazon.com/dp/example8",
+      "category": "Books"
+    }
+  ]
+}
