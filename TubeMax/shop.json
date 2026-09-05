@@ -7,7 +7,8 @@
       "image": "https://i.ibb.co/MkvS13ZJ/file-00000000b888720c8d37d79d167fd38a.png",
       "link": "https://www.amazon.com/dp/example1",
       "category": "Posters",
-      "description": "Official Dune: Part Two poster featuring Paul Atreides riding a sandworm. High-quality print on premium matte paper. Perfect for any fan's collection."
+      "description": "Official Dune: Part Two poster featuring Paul Atreides riding a sandworm. High-quality print on premium matte paper. Perfect for any fan's collection.",
+      "button_text": "Get Poster 🎬"
     },
     {
       "id": 2,
@@ -16,7 +17,8 @@
       "image": "https://via.placeholder.com/600x800/1a1a2e/white?text=Oppenheimer",
       "link": "https://www.amazon.com/dp/example2",
       "category": "Apparel",
-      "description": "Premium cotton t-shirt featuring the iconic Oppenheimer movie poster. Available in multiple sizes. A must-have for history and film enthusiasts."
+      "description": "Premium cotton t-shirt featuring the iconic Oppenheimer movie poster. Available in multiple sizes. A must-have for history and film enthusiasts.",
+      "button_text": "Buy Shirt 👕"
     },
     {
       "id": 3,
@@ -25,7 +27,8 @@
       "image": "https://via.placeholder.com/600x800/1a1a2e/white?text=Barbie",
       "link": "https://www.amazon.com/dp/example3",
       "category": "Collectibles",
-      "description": "Limited edition Barbie movie collectible figure. Comes in a display case with authentic movie branding. Perfect for collectors and fans."
+      "description": "Limited edition Barbie movie collectible figure. Comes in a display case with authentic movie branding. Perfect for collectors and fans.",
+      "button_text": "Collect Now 🎀"
     },
     {
       "id": 4,
@@ -34,7 +37,8 @@
       "image": "https://via.placeholder.com/600x800/1a1a2e/white?text=Spider-Verse",
       "link": "https://www.amazon.com/dp/example4",
       "category": "Books",
-      "description": "The Art of Spider-Man: Across the Spider-Verse. 200+ pages of concept art, character designs, and behind-the-scenes content from the award-winning film."
+      "description": "The Art of Spider-Man: Across the Spider-Verse. 200+ pages of concept art, character designs, and behind-the-scenes content from the award-winning film.",
+      "button_text": "Buy Art Book 📚"
     },
     {
       "id": 5,
@@ -43,7 +47,8 @@
       "image": "https://via.placeholder.com/600x800/1a1a2e/white?text=Batman",
       "link": "https://www.amazon.com/dp/example5",
       "category": "Collectibles",
-      "description": "Highly detailed The Batman action figure. Features movie-accurate costume and accessories. 12-inch scale with multiple points of articulation."
+      "description": "Highly detailed The Batman action figure. Features movie-accurate costume and accessories. 12-inch scale with multiple points of articulation.",
+      "button_text": "Get Figure 🦇"
     },
     {
       "id": 6,
@@ -52,7 +57,8 @@
       "image": "https://via.placeholder.com/600x800/1a1a2e/white?text=Ghibli",
       "link": "https://www.amazon.com/dp/example6",
       "category": "Merchandise",
-      "description": "Beautiful ceramic mug featuring Studio Ghibli characters. Dishwasher safe. A cozy addition to any anime lover's collection."
+      "description": "Beautiful ceramic mug featuring Studio Ghibli characters. Dishwasher safe. A cozy addition to any anime lover's collection.",
+      "button_text": "Buy Mug ☕"
     },
     {
       "id": 7,
@@ -61,7 +67,8 @@
       "image": "https://via.placeholder.com/600x800/1a1a2e/white?text=Interstellar",
       "link": "https://www.amazon.com/dp/example7",
       "category": "Music",
-      "description": "Hans Zimmer's iconic Interstellar soundtrack on 180g vinyl. Includes the complete score with stunning artwork. A must-have for any vinyl collector."
+      "description": "Hans Zimmer's iconic Interstellar soundtrack on 180g vinyl. Includes the complete score with stunning artwork. A must-have for any vinyl collector.",
+      "button_text": "Get Vinyl 🎵"
     },
     {
       "id": 8,
@@ -70,7 +77,8 @@
       "image": "https://via.placeholder.com/600x800/1a1a2e/white?text=Marvel+Art",
       "link": "https://www.amazon.com/dp/example8",
       "category": "Books",
-      "description": "The Art of Marvel Studios: 10 years of cinematic masterpieces. 300+ pages of concept art, production designs, and exclusive interviews with creators."
+      "description": "The Art of Marvel Studios: 10 years of cinematic masterpieces. 300+ pages of concept art, production designs, and exclusive interviews with creators.",
+      "button_text": "Buy Art Book 📖"
     }
   ]
 }
