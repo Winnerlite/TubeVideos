@@ -14,7 +14,6 @@
      </script>
 
 
-
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
     <title>Movie & Trailer App</title>
@@ -5185,6 +5184,104 @@ body.light-mode .clear-btn:hover {
     fill: white;
     margin-left: 2px;
 }
+
+
+
+/* Fix modal z-index - ensure it appears above everything */
+#productModal {
+    z-index: 999999 !important;
+    position: fixed !important;
+    top: 0 !important;
+    left: 0 !important;
+    width: 100% !important;
+    height: 100% !important;
+    background: rgba(0, 0, 0, 0.7) !important;
+    align-items: center !important;
+    justify-content: center !important;
+}
+
+#productModal .modal-content {
+    z-index: 1000000 !important;
+    position: relative !important;
+    max-width: 400px !important;
+    width: 90% !important;
+    max-height: 85vh !important;
+    overflow-y: auto !important;
+    padding: 0 !important;
+    border-radius: 16px !important;
+    background: var(--card-bg) !important;
+    box-shadow: 0 20px 60px rgba(0,0,0,0.5) !important;
+}
+
+/* Bottom nav - ensure it stays below modals */
+.bottom-nav {
+    z-index: 100004 !important; /* Keep this but modals are higher */
+}
+
+
+
+/* ============================================
+   PRODUCT IMAGE FADE-IN ANIMATION
+   ============================================ */
+
+/* Grid product images */
+.shop-item img {
+    opacity: 0;
+    animation: fadeInImage 0.6s ease forwards;
+}
+
+/* Stagger the animation for each product */
+.shop-item:nth-child(1) img { animation-delay: 0.05s; }
+.shop-item:nth-child(2) img { animation-delay: 0.10s; }
+.shop-item:nth-child(3) img { animation-delay: 0.15s; }
+.shop-item:nth-child(4) img { animation-delay: 0.20s; }
+.shop-item:nth-child(5) img { animation-delay: 0.25s; }
+.shop-item:nth-child(6) img { animation-delay: 0.30s; }
+.shop-item:nth-child(7) img { animation-delay: 0.35s; }
+.shop-item:nth-child(8) img { animation-delay: 0.40s; }
+
+/* Modal product image */
+#modalProductImage {
+    opacity: 0;
+    animation: fadeInImage 0.5s ease forwards;
+    animation-delay: 0.15s;
+}
+
+/* Modal content (the whole card) */
+#productModal .modal-content {
+    animation: fadeInModal 0.4s ease forwards;
+}
+
+/* ============================================
+   ANIMATION KEYFRAMES
+   ============================================ */
+
+@keyframes fadeInImage {
+    from {
+        opacity: 0;
+        transform: scale(0.95);
+    }
+    to {
+        opacity: 1;
+        transform: scale(1);
+    }
+}
+
+@keyframes fadeInModal {
+    from {
+        opacity: 0;
+        transform: scale(0.92) translateY(10px);
+    }
+    to {
+        opacity: 1;
+        transform: scale(1) translateY(0);
+    }
+}
+
+
+
+
+
     </style>
 </head>
 <body>
@@ -5449,6 +5546,9 @@ body.light-mode .clear-btn:hover {
     </div>
 </div>
 
+
+
+
     <div class="settings-card" id="profileCard">
     <div class="card-content">
         <h3>User Profile</h3>
@@ -5628,6 +5728,15 @@ body.light-mode .clear-btn:hover {
     </div>
 
 
+<div id="shopPage" class="page">
+    <div class="section" style="padding: 20px;">
+        
+        <p style="color: var(--text-secondary); text-align: center; margin: 20px 0;">
+            Welcome to shop: Browse through premuim digital content, selected just for you!
+        </p>
+        <div class="shop-grid" id="shopGrid" style="display: grid; grid-template-columns: repeat(2, 1fr); gap: 16px; padding: 10px 0;"></div>
+    </div>
+</div>
 
     <!-- Bottom Navigation -->
 <div class="bottom-nav">
@@ -5656,6 +5765,14 @@ body.light-mode .clear-btn:hover {
     <path d="M12 12c2.7 0 5-2.3 5-5s-2.3-5-5-5-5 2.3-5 5 2.3 5 5 5zm0 2c-3.3 0-10 1.7-10 5v3h20v-3c0-3.3-6.7-5-10-5z"></path>
   </svg>
   <span>Me</span>
+</a>
+
+
+<a href="#" class="nav-item" data-page="shopPage">
+    <svg class="nav-icon" viewBox="0 0 24 24" width="28" height="28" fill="currentColor">
+        <path d="M7 18c-1.1 0-2 .9-2 2s.9 2 2 2 2-.9 2-2-.9-2-2-2zM1 2v2h2l3.6 7.59-1.35 2.45c-.16.28-.25.61-.25.96 0 1.1.9 2 2 2h12v-2H7.42c-.14 0-.25-.11-.25-.25l.03-.12.9-1.63h7.45c.75 0 1.41-.41 1.75-1.03l3.58-6.49A1.003 1.003 0 0020 4H5.21l-.94-2H1zm16 16c-1.1 0-2 .9-2 2s.9 2 2 2 2-.9 2-2-.9-2-2-2z"/>
+    </svg>
+    <span>Shop</span>
 </a>
 </div>
 
@@ -6151,23 +6268,75 @@ function loadFromCache(key, maxAgeHours = 5) {  // Changed from 1 to 5 hours
 
 
 function showPage(pageId) {
+    // 1. Hide all pages, show the selected one
     document.querySelectorAll('.page').forEach(page => {
         page.classList.remove('active');
     });
     document.getElementById(pageId).classList.add('active');
 
+    // 2. Update nav item active state
     document.querySelectorAll('.nav-item').forEach(item => {
         item.classList.remove('active');
         if (item.getAttribute('data-page') === pageId) {
             item.classList.add('active');
         }
-
-        if (pageId === 'explorePage' || pageId === 'tvPage') {
-  applyImagesOffSetting();
-}
     });
 
+    // 3. Apply images-off setting (only on Explore and TV pages) – moved OUTSIDE the loop
+    if (pageId === 'explorePage' || pageId === 'tvPage') {
+        applyImagesOffSetting();
+    }
 
+    // 4. Hide search bar on pages that don't need it (including Shop)
+    const searchBar = document.querySelector('.search-container');
+    if (pageId === 'mePage' || pageId === 'shortsPage' || pageId === 'downloadsPage' || pageId === 'shopPage') {
+        searchBar.style.display = 'none';
+    } else {
+        searchBar.style.display = 'flex';
+    }
+
+    // 5. Load content when switching tabs
+    if (pageId === 'explorePage') {
+        const cachedTrailerResults = loadFromCache('cachedTrailerResults') || [];
+        const cachedMovieResults = loadFromCache('cachedMovieResults') || [];
+        const cachedAnimeResults = loadFromCache('cachedAnimeResults') || [];
+        const cachedSearchResults = loadFromCache('cachedSearchResults') || [];
+        const cachedSearchPage = loadFromCache('cachedSearchPage') || 0;
+
+        if (cachedTrailerResults.length > 0 && cachedMovieResults.length > 0 && cachedAnimeResults.length > 0) {
+            console.log('Loading cached explore results from localStorage:', {
+                trailerResults: cachedTrailerResults.length + ' items',
+                movieResults: cachedMovieResults.length + ' items',
+                animeResults: cachedAnimeResults.length + ' items'
+            });
+            trailerResults = cachedTrailerResults;
+            movieResults = cachedMovieResults;
+            animeResults = cachedAnimeResults;
+            displayExploreContent();
+            createExploreCarousel();
+            fetchForYouContent();
+        } else {
+            console.log('No valid cached explore results found or cache expired for explore page. Fetching new content.');
+            fetchExploreContent();
+        }
+    } else if (pageId === 'shortsPage') {
+        document.body.classList.add('shorts-open');
+        // ... (existing shorts logic)
+        document.body.classList.remove('shorts-open');
+    } else if (pageId === 'shopPage') {
+        // 🛍️ Load shop content when Shop tab is opened
+        if (typeof loadShopContent === 'function') {
+            loadShopContent();
+        }
+    }
+
+    // 6. Hide pagination on non-explore pages
+    document.querySelectorAll('.pagination-container').forEach(p => {
+        p.style.display = pageId === 'explorePage' ? 'flex' : 'none';
+    });
+}
+
+// 👇 IMPORTANT: Move showToast OUTSIDE showPage so it's available globally
 function showToast(message) {
     const toast = document.createElement('div');
     toast.className = 'toast';
@@ -6187,50 +6356,262 @@ function showToast(message) {
 }
 
 
-    // Hide search bar on Me & Shorts pages
-    const searchBar = document.querySelector('.search-container');
-    if (pageId === 'mePage' || pageId === 'shortsPage' || pageId === 'downloadsPage') {
-    searchBar.style.display = 'none';
-} else {
-    searchBar.style.display = 'flex';
-}
+// ============================================
+// SHOP MODULE - Complete Working Version
+// ============================================
 
-    // Load content when switching tabs
-    if (pageId === 'explorePage') {
-        const cachedTrailerResults = loadFromCache('cachedTrailerResults') || [];
-    const cachedMovieResults = loadFromCache('cachedMovieResults') || [];
-    const cachedAnimeResults = loadFromCache('cachedAnimeResults') || [];
-    const cachedSearchResults = loadFromCache('cachedSearchResults') || [];
-    const cachedSearchPage = loadFromCache('cachedSearchPage') || 0;
+const SHOP_JSON_URL = 'https://raw.githubusercontent.com/Winnerlite/TubeVideos/refs/heads/main/TubeMax/shop.json';
 
-    if (cachedTrailerResults.length > 0 && cachedMovieResults.length > 0 && cachedAnimeResults.length > 0) {
-        console.log('Loading cached explore results from localStorage:', {
-            trailerResults: cachedTrailerResults.length + ' items',
-            movieResults: cachedMovieResults.length + ' items',
-            animeResults: cachedAnimeResults.length + ' items'
-        });
-        trailerResults = cachedTrailerResults;
-        movieResults = cachedMovieResults;
-        animeResults = cachedAnimeResults;
-        displayExploreContent();
-        createExploreCarousel();
-        fetchForYouContent();
+// ============================================
+// 1. LOAD SHOP CONTENT
+// ============================================
 
-        } else {
-            console.log('No valid cached explore results found or cache expired for explore page. Fetching new content.');
-            fetchExploreContent();
-        }
-    } else if (pageId === 'shortsPage') {
-        document.body.classList.add('shorts-open');
+function loadShopContent() {
+    const grid = document.getElementById('shopGrid');
+    if (!grid) return;
 
-        document.body.classList.remove('shorts-open');
+    // Check cache first (5-hour expiry)
+    const cachedData = loadFromCache('cachedShopProducts');
+    if (cachedData && cachedData.length > 0) {
+        console.log('📦 Loading shop products from cache');
+        renderProducts(cachedData);
+        return;
     }
 
-    // Hide pagination on non-explore pages
-    document.querySelectorAll('.pagination-container').forEach(p => {
-        p.style.display = pageId === 'explorePage' ? 'flex' : 'none';
-    });
+    // Show loading state
+    grid.innerHTML = `
+        <div style="grid-column: 1 / -1; text-align: center; padding: 40px; color: var(--text-secondary);">
+            <div class="spinner" style="width: 30px; height: 30px; margin: 0 auto 15px;"></div>
+            <p>Loading products...</p>
+        </div>
+    `;
+
+    fetchShopProducts();
+    
 }
+
+// ============================================
+// 2. FETCH FROM GITHUB
+// ============================================
+
+async function fetchShopProducts() {
+    try {
+        const freshUrl = SHOP_JSON_URL + '?t=' + Date.now();
+        const response = await fetch(freshUrl);
+        
+        if (!response.ok) {
+            throw new Error(`GitHub response: ${response.status}`);
+        }
+
+        const data = await response.json();
+        
+        if (data && data.products && data.products.length > 0) {
+            saveToCache('cachedShopProducts', data.products);
+            renderProducts(data.products);
+        } else {
+            renderError('No products found');
+        }
+    } catch (error) {
+        console.error('❌ Failed to load shop products:', error);
+        renderError('Failed to load products. Please try again.');
+    }
+}
+
+// ============================================
+// 3. RENDER PRODUCTS (GRID VIEW)
+// ============================================
+
+function renderProducts(products) {
+    const grid = document.getElementById('shopGrid');
+    if (!grid) return;
+
+    grid.innerHTML = products.map(p => `
+        <div class="shop-item" style="background: var(--card-bg); border-radius: 12px; overflow: hidden; box-shadow: 0 4px 12px rgba(0,0,0,0.2); transition: transform 0.3s;">
+            <img src="${p.image || 'https://via.placeholder.com/300x400/1a1a2e/white?text=No+Image'}" 
+                 style="width: 100%; aspect-ratio: 3/4; object-fit: cover; display: block;" 
+                 loading="lazy"
+                 onerror="this.src='https://via.placeholder.com/300x400/1a1a2e/white?text=No+Image'">
+            <div style="padding: 12px;">
+                ${p.category ? `<span style="font-size: 10px; color: var(--primary); text-transform: uppercase; letter-spacing: 0.5px;">${p.category}</span>` : ''}
+                <h4 style="font-size: 14px; margin: 4px 0 4px 0; color: var(--text);">${p.name}</h4>
+                <p style="font-size: 14px; color: var(--primary); font-weight: 600;">${p.price}</p>
+                <button onclick="openProductDetail(${p.id})" style="
+                    width: 100%; 
+                    padding: 10px; 
+                    background: var(--primary); 
+                    color: white; 
+                    border: none; 
+                    border-radius: 8px; 
+                    cursor: pointer; 
+                    font-size: 13px; 
+                    font-weight: 600;
+                    transition: all 0.3s;
+                " onmouseover="this.style.transform='scale(1.02)'" onmouseout="this.style.transform='scale(1)'">
+                    ${p.button_text ? 'View Details 🔍' : 'Open 🔍'}
+                </button>
+            </div>
+        </div>
+    `).join('');
+}
+
+// ============================================
+// 4. RENDER ERROR
+// ============================================
+
+function renderError(message) {
+    const grid = document.getElementById('shopGrid');
+    if (!grid) return;
+
+    grid.innerHTML = `
+        <div style="grid-column: 1 / -1; text-align: center; padding: 40px; color: var(--text-secondary);">
+            <i class="fas fa-exclamation-triangle" style="font-size: 40px; margin-bottom: 15px; opacity: 0.5;"></i>
+            <p>${message}</p>
+            <button onclick="loadShopContent()" style="margin-top: 15px; padding: 10px 30px; background: var(--primary); color: white; border: none; border-radius: 20px; cursor: pointer; font-size: 14px; font-weight: 600;">
+                Retry
+            </button>
+        </div>
+    `;
+}
+
+// ============================================
+// 5. OPEN PRODUCT DETAIL (MODAL)
+// ============================================
+
+function openProductDetail(productId) {
+    console.log('🛍️ Opening product:', productId);
+    
+    try {
+        const cachedData = loadFromCache('cachedShopProducts');
+        if (!cachedData) {
+            showToast('Please wait, loading products...');
+            return;
+        }
+
+        const product = cachedData.find(p => p.id === productId);
+        if (!product) {
+            showToast('Product not found');
+            return;
+        }
+
+        console.log('✅ Product found:', product.name);
+
+        // Fill modal with product data
+        const img = document.getElementById('modalProductImage');
+        if (img) {
+            img.style.animation = 'none';
+            img.offsetHeight;
+            img.style.animation = 'fadeInImage 0.5s ease forwards';
+            img.style.animationDelay = '0.15s';
+            
+            img.src = product.image || 'https://via.placeholder.com/600x800/1a1a2e/white?text=No+Image';
+            img.onerror = function() {
+                this.src = 'https://via.placeholder.com/600x800/1a1a2e/white?text=No+Image';
+            };
+        }
+        
+        const category = document.getElementById('modalProductCategory');
+        if (category) category.textContent = product.category || '';
+        
+        const name = document.getElementById('modalProductName');
+        if (name) name.textContent = product.name;
+        
+        const price = document.getElementById('modalProductPrice');
+        if (price) price.textContent = product.price;
+        
+        const description = document.getElementById('modalProductDescription');
+        if (description) description.textContent = product.description || 'No description available.';
+        
+        // ✅ Use button_text from JSON, fallback to "Buy Now 🛒"
+        const buttonText = product.button_text || 'Buy Now 🛒';
+        const buyBtn = document.getElementById('modalBuyBtn');
+        if (buyBtn) {
+            buyBtn.textContent = buttonText;
+            buyBtn.onclick = function() {
+                console.log('🛒 Button clicked for:', product.name);
+                handleAdClick(product.link || '#');
+            };
+        }
+
+        // Show modal
+        const modal = document.getElementById('productModal');
+        if (modal) {
+            modal.style.display = 'flex';
+            modal.style.opacity = '0';
+            
+            const content = modal.querySelector('.modal-content');
+            if (content) {
+                content.style.animation = 'none';
+                content.offsetHeight;
+                content.style.animation = 'fadeInModal 0.4s ease forwards';
+            }
+            
+            setTimeout(function() {
+                modal.style.opacity = '1';
+            }, 50);
+        } else {
+            console.error('❌ Product modal element not found');
+            showToast('Error: Modal not found');
+        }
+    } catch (error) {
+        console.error('❌ Error opening product:', error);
+        showToast('Error opening product details');
+    }
+}
+
+// ============================================
+// 6. CLOSE PRODUCT MODAL
+// ============================================
+
+function closeProductModal() {
+    const modal = document.getElementById('productModal');
+    if (!modal) return;
+    
+    modal.style.opacity = '0';
+    const content = modal.querySelector('.modal-content');
+    if (content) {
+        content.style.transform = 'scale(0.95)';
+    }
+    
+    setTimeout(function() {
+        modal.style.display = 'none';
+    }, 300);
+}
+
+// ============================================
+// 7. MAKE FUNCTIONS GLOBAL
+// ============================================
+
+window.loadShopContent = loadShopContent;
+window.openProductDetail = openProductDetail;
+window.closeProductModal = closeProductModal;
+window.fetchShopProducts = fetchShopProducts;
+window.renderProducts = renderProducts;
+
+// ============================================
+// 8. CLOSE MODAL ON OUTSIDE CLICK
+// ============================================
+
+document.addEventListener('click', function(e) {
+    // Product modal
+    const productModal = document.getElementById('productModal');
+    if (productModal && e.target === productModal) {
+        closeProductModal();
+        return;
+    }
+});
+
+// ============================================
+// 9. INITIALIZE ON PAGE LOAD
+// ============================================
+
+console.log('🛍️ Shop module loaded successfully');
+
+
+
+
+// ============================================
+// CAROUSEL SKELETON LOADING
+// ============================================
 
 function generateCarouselSkeleton() {
     const skeletonItems = Array(5).fill().map(() => `
@@ -6238,7 +6619,7 @@ function generateCarouselSkeleton() {
             <div class="skeleton-thumbnail"></div>
         </div>
     `).join('');
-
+    
     return `
         <div class="carousel-container">
             <div class="carousel-track" style="transform: translateX(0px)">
@@ -6248,6 +6629,7 @@ function generateCarouselSkeleton() {
     `;
 }
 
+// Also make sure generateCardSkeleton exists
 function generateCardSkeleton() {
     return `
         <div class="skeleton-card">
@@ -6260,6 +6642,8 @@ function generateCardSkeleton() {
         </div>
     `;
 }
+
+
 // Function to handle image loading with fade-in effect
 function loadImageWithFade(imgElement) {
     if (imgElement.complete) {
@@ -7057,22 +7441,29 @@ document.getElementById('closeAboutBtn')?.addEventListener('click', hideAboutMod
 
     // Modal close on outside click
  window.addEventListener('click', (event) => {
-
+    const authModal = document.getElementById('authModal');
+    const accountModal = document.getElementById('accountModal');
     const notificationModal = document.getElementById('notificationModal');
     const aboutModal = document.getElementById('aboutModal');
-    if (event.target === authModal) {
+    const clearHistoryModal = document.getElementById('clearHistoryModal');
+    
+    if (authModal && event.target === authModal) {
         closeAuthModal();
     }
-    if (event.target === accountModal) {
+    if (accountModal && event.target === accountModal) {
         closeModal();
     }
-    if (event.target === notificationModal) {
+    if (notificationModal && event.target === notificationModal) {
         hideNotificationModal();
     }
-    if (event.target === aboutModal) {
+    if (aboutModal && event.target === aboutModal) {
         hideAboutModal();
     }
+    if (clearHistoryModal && event.target === clearHistoryModal) {
+        closeClearHistoryModal();
+    }
 });
+
 
     // Persist last search
     const lastSearch = localStorage.getItem('lastSearch');
@@ -7675,7 +8066,7 @@ document.addEventListener('DOMContentLoaded', function() {
   function handlePageVisibility() {
     const hash = window.location.hash || '#explorePage';
     const searchBar = document.querySelector('.search-container');
-    const hiddenPages = ['#mePage', '#downloadsPage', '#shortsPage'];
+    const hiddenPages = ['#mePage', '#downloadsPage', '#shortsPage', '#shopPage'];
 
     // Toggle search bar visibility
     if (searchBar) {
@@ -11080,6 +11471,80 @@ function loadVastOverlay() {
 
   window.addEventListener('message', handleVastMessage);
 }
+
+
+
+
+
+// ============================================
+// SHOP WELCOME MODAL - ONE TIME
+// ============================================
+
+function showShopWelcome() {
+    // Check if user has already seen it
+    const hasSeenShopWelcome = localStorage.getItem('hasSeenShopWelcome');
+    if (hasSeenShopWelcome === 'true') {
+        return;
+    }
+    
+    const modal = document.getElementById('shopWelcomeModal');
+    if (!modal) return;
+    
+    // Show modal with animation
+    modal.style.display = 'flex';
+    modal.style.opacity = '0';
+    const content = modal.querySelector('.modal-content');
+    if (content) {
+        content.style.transform = 'scale(0.92) translateY(10px)';
+    }
+    
+    setTimeout(() => {
+        modal.style.opacity = '1';
+        if (content) {
+            content.style.transform = 'scale(1) translateY(0)';
+        }
+    }, 50);
+}
+
+function closeShopWelcome() {
+    const modal = document.getElementById('shopWelcomeModal');
+    if (!modal) return;
+    
+    modal.style.opacity = '0';
+    const content = modal.querySelector('.modal-content');
+    if (content) {
+        content.style.transform = 'scale(0.92) translateY(10px)';
+    }
+    
+    // Mark as seen
+    localStorage.setItem('hasSeenShopWelcome', 'true');
+    
+    setTimeout(() => {
+        modal.style.display = 'none';
+    }, 300);
+}
+
+// Close on outside click
+document.addEventListener('click', function(e) {
+    const modal = document.getElementById('shopWelcomeModal');
+    if (modal && e.target === modal) {
+        closeShopWelcome();
+    }
+});
+
+// Show when user opens Shop tab
+// Add this to your showPage function or shop load
+function checkShopWelcome() {
+    const pageId = document.querySelector('.page.active')?.id;
+    if (pageId === 'shopPage') {
+        setTimeout(showShopWelcome, 500);
+    }
+}
+
+// OR add to your loadShopContent function:
+// At the end of loadShopContent(), add:
+// setTimeout(showShopWelcome, 500);
+
 </script>
 <!-- Now Playing Popup -->
 <div id="nowPlayingPopup" class="now-playing-popup">
@@ -11121,6 +11586,73 @@ function loadVastOverlay() {
   <i class="fas fa-spinner fa-spin"></i>
   <p>Checking availability...</p>
 </div>
+
+
+
+<!-- Product Detail Modal -->
+<!-- Product Detail Modal -->
+<div id="productModal" class="modal" style="display: none; align-items: center; justify-content: center;">
+    <div class="modal-content" style="max-width: 400px; width: 90%; max-height: 90vh; overflow-y: auto; padding: 0; border-radius: 16px; background: var(--card-bg); position: relative;">
+        <!-- Close button -->
+        <button onclick="closeProductModal()" style="position: absolute; top: 10px; right: 10px; background: rgba(0,0,0,0.5); border: none; color: white; font-size: 24px; cursor: pointer; width: 36px; height: 36px; border-radius: 50%; display: flex; align-items: center; justify-content: center; z-index: 10;">✕</button>
+
+        <!-- Product Image -->
+        <img id="modalProductImage" src="" style="width: 100%; aspect-ratio: 2/3; object-fit: cover; display: block;">
+
+        <!-- Product Details -->
+        <div style="padding: 20px;">
+            <span id="modalProductCategory" style="font-size: 11px; color: var(--primary); text-transform: uppercase; letter-spacing: 0.5px; font-weight: 600;"></span>
+            
+            <h2 id="modalProductName" style="font-size: 22px; margin: 8px 0 4px 0; color: var(--text);"></h2>
+            
+            <p id="modalProductPrice" style="font-size: 20px; color: var(--primary); font-weight: 700; margin: 8px 0 16px 0;"></p>
+            
+            <p id="modalProductDescription" style="font-size: 14px; color: var(--text-secondary); line-height: 1.6; margin-bottom: 16px;"></p>
+
+            <!-- ✅ TRUST / SAFETY MESSAGE -->
+            <div style="
+                background: rgba(216, 27, 96, 0.08); 
+                border: 1px solid rgba(216, 27, 96, 0.2); 
+                border-radius: 10px; 
+                padding: 12px 14px; 
+                margin-bottom: 18px;
+                display: flex;
+                align-items: flex-start;
+                gap: 10px;
+            ">
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="var(--primary)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="flex-shrink: 0; margin-top: 1px;">
+                    <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/>
+                    <polyline points="9 12 11 14 15 10"/>
+                </svg>
+                <div style="font-size: 12px; color: var(--text-secondary); line-height: 1.5;">
+                    <strong style="color: var(--text);">Secure</strong><br>
+                    All purchases are processed through trusted partners. Your data is safe with TubeMax.
+                </div>
+            </div>
+
+            <!-- Buy Now Button -->
+            <button id="modalBuyBtn" style="
+                width: 100%; 
+                padding: 14px; 
+                background: var(--primary); 
+                color: white; 
+                border: none; 
+                border-radius: 12px; 
+                cursor: pointer; 
+                font-size: 16px; 
+                font-weight: 700;
+                transition: all 0.3s;
+                box-shadow: 0 4px 15px var(--glow);
+            " onmouseover="this.style.transform='scale(1.02)'" onmouseout="this.style.transform='scale(1)'">
+                Buy Now
+            </button>
+        </div>
+    </div>
+</div>
+
+
+
+
 </body>
 </html>
 </body>
