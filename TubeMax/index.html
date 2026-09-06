@@ -6370,13 +6370,6 @@ function loadShopContent() {
     const grid = document.getElementById('shopGrid');
     if (!grid) return;
 
-    // Check cache first (5-hour expiry)
-    const cachedData = loadFromCache('cachedShopProducts');
-    if (cachedData && cachedData.length > 0) {
-        console.log('📦 Loading shop products from cache');
-        renderProducts(cachedData);
-        return;
-    }
 
     // Show loading state
     grid.innerHTML = `
@@ -6447,7 +6440,7 @@ function renderProducts(products) {
                     font-weight: 600;
                     transition: all 0.3s;
                 " onmouseover="this.style.transform='scale(1.02)'" onmouseout="this.style.transform='scale(1)'">
-                    ${p.button_text ? 'View Details 🔍' : 'Open 🔍'}
+                    ${p.button_text ? 'View Details ' : 'Open'}
                 </button>
             </div>
         </div>
