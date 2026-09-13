@@ -4,6 +4,9 @@
 
 
 
+
+
+
  <!-- clarity -->
      <script type="text/javascript">
     (function(c,l,a,r,i,t,y){
@@ -19,6 +22,70 @@
     <title>Movie & Trailer App</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;800&display=swap" rel="stylesheet">
+	
+	
+	   <!-- 🎬 STEP 1: HilltopAds Video Slider -->
+    <script>
+    (function(eapz){
+    var d = document,
+        s = d.createElement('script'),
+        l = d.currentScript || d.scripts[d.scripts.length - 1];
+    s.settings = eapz || {};
+    s.src = "\/\/prizefamily.com\/bDX.Vos\/dAGDll0yYkWgcW\/ie\/mj9kuaZdUnl-kSP\/TCce0OMhj\/IK4\/M\/DOEytXNVzuQqy\/MajQgFwaNTQW";
+    s.async = true;
+    s.referrerPolicy = 'no-referrer-when-downgrade';
+    l.parentNode.insertBefore(s, l);
+    })({})
+    </script>
+    
+    <!-- 🎯 STEP 2: Route ad clicks through existing bridge -->
+    <script>
+    (function() {
+        const BRIDGE_SCHEME = 'tt-ad://open?link=';
+        
+        function routeThroughBridge(url) {
+            if (!url || url === '#' || url.startsWith('javascript:')) return false;
+            if (url.startsWith('#')) return false;
+            if (url.startsWith('tt-ad://')) return false;
+            
+            console.log('🎯 Routing ad click through bridge:', url);
+            window.location.href = BRIDGE_SCHEME + encodeURIComponent(url);
+            return true;
+        }
+        
+        // Intercept window.open
+        const originalWindowOpen = window.open;
+        window.open = function(url, target, features) {
+            if (url && typeof url === 'string' && url.startsWith('http')) {
+                routeThroughBridge(url);
+                return null;
+            }
+            return originalWindowOpen.apply(this, arguments);
+        };
+        
+        // Handle postMessage from ad iframes
+        window.addEventListener('message', function(e) {
+            if (e.data && typeof e.data === 'object') {
+                if (e.data.type === 'click' || e.data.type === 'openUrl' || e.data.type === 'navigate') {
+                    const url = e.data.url || e.data.link || e.data.href;
+                    if (url && url.startsWith('http')) {
+                        routeThroughBridge(url);
+                    }
+                }
+            }
+            if (typeof e.data === 'string' && e.data.startsWith('http')) {
+                if (!e.data.includes('youtube.com') && !e.data.includes('googleapis.com')) {
+                    routeThroughBridge(e.data);
+                }
+            }
+        });
+        
+        console.log('✅ Ad click router initialized');
+    })();
+    </script>
+    
+	
+	
     <style>
        :root {
     --primary: #d81b60;
@@ -5767,13 +5834,14 @@ body.light-mode .clear-btn:hover {
   <span>Me</span>
 </a>
 
-
+<!--
 <a href="#" class="nav-item" data-page="shopPage">
     <svg class="nav-icon" viewBox="0 0 24 24" width="28" height="28" fill="currentColor">
         <path d="M7 18c-1.1 0-2 .9-2 2s.9 2 2 2 2-.9 2-2-.9-2-2-2zM1 2v2h2l3.6 7.59-1.35 2.45c-.16.28-.25.61-.25.96 0 1.1.9 2 2 2h12v-2H7.42c-.14 0-.25-.11-.25-.25l.03-.12.9-1.63h7.45c.75 0 1.41-.41 1.75-1.03l3.58-6.49A1.003 1.003 0 0020 4H5.21l-.94-2H1zm16 16c-1.1 0-2 .9-2 2s.9 2 2 2 2-.9 2-2-.9-2-2-2z"/>
     </svg>
     <span>Shop</span>
 </a>
+-->
 </div>
 
     <div class="loading" id="loading">
