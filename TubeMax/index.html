@@ -24,88 +24,7 @@
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;800&display=swap" rel="stylesheet">
 	
 	
-	   <!-- 🎬 STEP 1: HilltopAds Video Slider -->
-    <script>
-    (function(eapz){
-    var d = document,
-        s = d.createElement('script'),
-        l = d.currentScript || d.scripts[d.scripts.length - 1];
-    s.settings = eapz || {};
-    s.src = "\/\/prizefamily.com\/bDX.Vos\/dAGDll0yYkWgcW\/ie\/mj9kuaZdUnl-kSP\/TCce0OMhj\/IK4\/M\/DOEytXNVzuQqy\/MajQgFwaNTQW";
-    s.async = true;
-    s.referrerPolicy = 'no-referrer-when-downgrade';
-    l.parentNode.insertBefore(s, l);
-    })({})
-    </script>
-    
-    <!-- 🎯 STEP 2: Route ad clicks through existing bridge -->
-   <script>
-(function() {
-    const BRIDGE_SCHEME = 'tt-ad://open?link=';
-
-    function routeThroughBridge(url) {
-        if (!url || url === '#' || url.startsWith('javascript:')) return false;
-        if (url.startsWith('#')) return false;
-        if (url.startsWith('tt-ad://')) return false;
-
-        console.log('🎯 Routing ad click through bridge:', url);
-        window.location.href = BRIDGE_SCHEME + encodeURIComponent(url);
-        return true;
-    }
-
-    // 1. Override window.open on BOTH the instance and the prototype
-    // (some ad scripts call Window.prototype.open.call(...) directly)
-    function openOverride(url, target, features) {
-        if (url && typeof url === 'string' && url.startsWith('http')) {
-            routeThroughBridge(url);
-            return null;
-        }
-        return null;
-    }
-    window.open = openOverride;
-    try {
-        Object.defineProperty(Window.prototype, 'open', {
-            value: openOverride,
-            writable: false,
-            configurable: false
-        });
-    } catch (e) {
-        console.warn('Could not lock Window.prototype.open:', e);
-    }
-
-    // 2. Catch real <a target="_blank"> clicks (popunder scripts often
-    // build and .click() an anchor instead of calling window.open)
-    document.addEventListener('click', function(e) {
-        const anchor = e.target.closest && e.target.closest('a');
-        if (!anchor) return;
-        const href = anchor.getAttribute('href');
-        if (href && href.startsWith('http') && anchor.target === '_blank') {
-            e.preventDefault();
-            e.stopPropagation();
-            routeThroughBridge(href);
-        }
-    }, true); // capture phase — catch it before the ad script's own listener
-
-    // Handle postMessage from ad iframes (kept from before)
-    window.addEventListener('message', function(e) {
-        if (e.data && typeof e.data === 'object') {
-            if (e.data.type === 'click' || e.data.type === 'openUrl' || e.data.type === 'navigate') {
-                const url = e.data.url || e.data.link || e.data.href;
-                if (url && url.startsWith('http')) {
-                    routeThroughBridge(url);
-                }
-            }
-        }
-        if (typeof e.data === 'string' && e.data.startsWith('http')) {
-            if (!e.data.includes('youtube.com') && !e.data.includes('googleapis.com')) {
-                routeThroughBridge(e.data);
-            }
-        }
-    });
-
-    console.log('✅ Ad click router initialized');
-})();
-</script>
+	   
     
 	
 	
@@ -11548,7 +11467,7 @@ function loadVastOverlay() {
 
     if (e.data?.type === 'vastClick') {
       if (typeof AndroidInterface !== 'undefined') {
-        AndroidInterface.openAdBrowser(e.data.url);
+        AndroidInterface.openAdbrowser(e.data.url);
       }
     }
   }
