@@ -7,22 +7,24 @@
 
   // ============ CONFIG ============
   var CONFIG = {
-    maxWaitMs: 12000,          // hard fallback: load ads anyway after 12s
-    postGestureDelayMs: 800,   // small delay after gesture before loading
-    monetag:  { src: 'https://quge5.com/88/tag.min.js', zone: '283720' },
+    maxWaitMs: 12000,
+    postGestureDelayMs: 800,
+
+    // ❌ MONETAG — commented out (multi-ads: popunder, banner, popups, in-page push)
+    // monetag: { src: 'https://quge5.com/88/tag.min.js', zone: '283720' },
+
+    // ✅ MONIDIAD
     monidiad: {
       dynamic: { src: 'https://ss.mrmnd.com/dynamic.js', id: '56ea8c1f-d3c3-443c-bc4a-68ee5e41c4f8' },
       banner:  { src: 'https://ss.mrmnd.com/banner.js' }
     }
   };
 
-  // Sites that should still open normally (your own pages, YouTube embed, etc.)
   var ALLOWLIST = [
     'https://winnerlite.github.io'
   ];
 
   var adsLoaded = false;
-  var ready = false;
 
   function isAllowed(url) {
     for (var i = 0; i < ALLOWLIST.length; i++) {
@@ -35,19 +37,45 @@
     return typeof url === 'string' && /^https?:\/\//i.test(url);
   }
 
+  // ============ INTENT PARSER ============
+  // Pulls the real https URL out of an Android intent:// URL.
+  // Harmless if never used; helpful if Monidiad ever fires one.
+  function parseIntentUrl(intentUrl) {
+    if (typeof intentUrl !== 'string') return null;
+    if (intentUrl.indexOf('intent:') !== 0) return null;
+
+    var fb = intentUrl.match(/[?&]browser_fallback_url=([^&#]+)/);
+    if (fb) { try { return decodeURIComponent(fb[1]); } catch (e) {} }
+
+    var fb2 = intentUrl.match(/S\.browser_fallback_url=([^;]+)/);
+    if (fb2) { try { return decodeURIComponent(fb2[1]); } catch (e) {} }
+
+    var schemeMatch = intentUrl.match(/scheme=([a-zA-Z][a-zA-Z0-9+.\-]*)/);
+    var scheme = schemeMatch ? schemeMatch[1] : 'https';
+    var body = intentUrl.slice('intent://'.length);
+    var h = body.indexOf('#Intent;');
+    if (h >= 0) body = body.slice(0, h);
+    return scheme + '://' + body;
+  }
+
   // ============ ROUTER ============
-  // Primary path: call the Java bridge directly.
-  // Fallback path: fire your existing tt-ad:// scheme, which MainActivity's
-  // WebViewClient already intercepts and routes to AdbrowserActivity.
   function routeToInApp(url) {
     if (!url) return;
-    console.log('[AdController] routing:', url);
+
+    // If it's an intent:// URL, extract the inner https URL
+    var realUrl = parseIntentUrl(url);
+    if (realUrl) {
+      if (window.__adDebug) window.__adDebug('INTENT → ' + realUrl, '#ff0');
+      url = realUrl;
+    }
+
+    if (window.__adDebug) window.__adDebug('ROUTE: ' + url);
+
     try {
       if (window.AndroidInterface && typeof window.AndroidInterface.openAdbrowser === 'function') {
         window.AndroidInterface.openAdbrowser(url);
         return;
       }
-      // Fallback: use the scheme your native code already catches
       window.location.href = 'tt-ad://open?link=' + encodeURIComponent(url);
     } catch (e) {
       console.error('[AdController] route failed:', e);
@@ -55,35 +83,54 @@
   }
 
   // ============ INTERCEPTOR 1: window.open ============
-  // Many ad popunders call window.open directly.
   var _nativeOpen = window.open;
   window.open = function (url, name, features) {
+    if (typeof url === 'string') {
+      var parsed = parseIntentUrl(url);
+      if (parsed && isHttp(parsed) && !isAllowed(parsed)) {
+        routeToInApp(parsed);
+        return fakeWindow(parsed);
+      }
+    }
     if (isHttp(url) && !isAllowed(url)) {
       routeToInApp(url);
       return fakeWindow(url);
     }
-    // Non-http (about:blank) or allowlisted: let it fall through but
-    // return a stub so the ad's "did popup open?" check passes.
     if (isHttp(url)) {
       return _nativeOpen ? _nativeOpen.apply(this, arguments) : null;
     }
     return fakeWindow(url || 'about:blank');
   };
 
-  // Some ad scripts do:  var w = window.open(); w.location = realUrl;
-  // We hand them a fake window whose location setter routes to us.
   function fakeWindow(initialUrl) {
     var _url = initialUrl || 'about:blank';
     var loc = {
       get href() { return _url; },
-      set href(v) { routeToInApp(v); _url = v; },
-      replace: function (v) { routeToInApp(v); _url = v; },
-      assign:  function (v) { routeToInApp(v); _url = v; },
+      set href(v) {
+        var p = parseIntentUrl(v);
+        routeToInApp(p || v);
+        _url = p || v;
+      },
+      replace: function (v) {
+        var p = parseIntentUrl(v);
+        routeToInApp(p || v);
+        _url = p || v;
+      },
+      assign: function (v) {
+        var p = parseIntentUrl(v);
+        routeToInApp(p || v);
+        _url = p || v;
+      },
       toString: function () { return _url; }
     };
     return {
       get location() { return loc; },
-      set location(v) { if (typeof v === 'string') routeToInApp(v); else if (v && v.href) routeToInApp(v.href); },
+      set location(v) {
+        var u = typeof v === 'string' ? v : (v && v.href) || '';
+        var p = parseIntentUrl(u);
+        routeToInApp(p || u);
+        _url = p || u;
+      },
       close: function () {},
       focus: function () {},
       blur:  function () {},
@@ -93,18 +140,15 @@
     };
   }
 
-  // ============ INTERCEPTOR 2: target="_blank" anchor clicks ============
-  // Ad creatives often inject <a href="..." target="_blank"> themselves.
-  // Capture phase so we beat the browser's default new-window behavior.
+  // ============ INTERCEPTOR 2: click on target="_blank" anchors ============
   document.addEventListener('click', function (e) {
     var a = e.target && e.target.closest ? e.target.closest('a') : null;
     if (!a) return;
     var href = a.getAttribute('href') || '';
-    if (!isHttp(href)) return;
+    if (!isHttp(href) && href.indexOf('intent://') !== 0) return;
     if (isAllowed(href)) return;
 
     var target = a.getAttribute('target');
-    // Route any popup/blank-target link, and any anchor marked as an ad
     if (target === '_blank' || target === '_new' || a.dataset.adRoute === 'true') {
       e.preventDefault();
       e.stopPropagation();
@@ -112,13 +156,13 @@
     }
   }, true);
 
-  // ============ INTERCEPTOR 3: middle-click / auxclick ============
+  // ============ INTERCEPTOR 3: middle-click ============
   document.addEventListener('auxclick', function (e) {
-    if (e.button !== 1) return; // middle button only
+    if (e.button !== 1) return;
     var a = e.target && e.target.closest ? e.target.closest('a') : null;
     if (!a) return;
     var href = a.getAttribute('href') || '';
-    if (isHttp(href) && !isAllowed(href)) {
+    if ((isHttp(href) || href.indexOf('intent://') === 0) && !isAllowed(href)) {
       e.preventDefault();
       e.stopPropagation();
       routeToInApp(href);
@@ -127,29 +171,39 @@
 
   // ============ AD LOADER ============
   function injectScript(opts) {
+    if (window.__adDebug) window.__adDebug('INJECT: ' + opts.src);
     var s = document.createElement('script');
     s.src = opts.src;
     s.async = true;
     if (opts.zone) s.setAttribute('data-zone', opts.zone);
     if (opts.id)   s.setAttribute('data-mnddynid', opts.id);
     if (opts.src.indexOf('quge5.com') !== -1) s.setAttribute('data-cfasync', 'false');
-    s.onerror = function () { console.warn('[AdController] failed to load', opts.src); };
+    s.onerror = function () {
+      if (window.__adDebug) window.__adDebug('FAIL: ' + opts.src, '#f66');
+      console.warn('[AdController] failed to load', opts.src);
+    };
+    s.onload = function () {
+      if (window.__adDebug) window.__adDebug('OK: ' + opts.src, '#0f0');
+    };
     document.head.appendChild(s);
   }
 
   function loadAds() {
     if (adsLoaded) return;
     adsLoaded = true;
-    console.log('[AdController] loading ads now');
-    injectScript(CONFIG.monetag);
-    // Uncomment if you want Monidiad dynamic/popunder as well:
-    // injectScript(CONFIG.monidiad.dynamic);
+    if (window.__adDebug) window.__adDebug('LOAD ADS FIRED', '#ff0');
+
+    // ❌ Monetag — commented out
+    // injectScript(CONFIG.monetag);
+
+    // ✅ Monidiad
+    injectScript(CONFIG.monidiad.dynamic);
     injectScript(CONFIG.monidiad.banner);
   }
 
   // ============ TRIGGERS ============
-  // Fire on first real user gesture. This is what ad networks like to see.
-  function gestureHandler() {
+  function gestureHandler(e) {
+    if (window.__adDebug) window.__adDebug('GESTURE: ' + e.type);
     document.removeEventListener('click',      gestureHandler, true);
     document.removeEventListener('touchstart', gestureHandler, true);
     document.removeEventListener('scroll',     gestureHandler, true);
@@ -159,12 +213,9 @@
   document.addEventListener('touchstart', gestureHandler, true);
   document.addEventListener('scroll',     gestureHandler, true);
 
-  // Hard fallback so a passive user still gets ads eventually.
   setTimeout(function () { if (!adsLoaded) loadAds(); }, CONFIG.maxWaitMs);
 
   // ============ PUBLIC API ============
-  // You can call window.AdController.load() from your own code if you want
-  // manual control (e.g., after the first trailer starts playing).
   window.AdController = {
     load: loadAds,
     route: routeToInApp,
