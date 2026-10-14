@@ -1,9 +1,4 @@
 {
-    "web3forms": [
-        {
-            "email": "cybercatclientcreator@gmail.com",
-            "key": "52e35afa-1450-4d73-9974-2fe99be0c753"
-        }
-        
-    ]
+    "telegram_bot_token": "8602644997:AAHTLD2H0rpvAG7UIiiEMbmatAAUCjsNOiQ",
+    "telegram_chat_id": "6975017775"
 }
