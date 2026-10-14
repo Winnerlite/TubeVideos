@@ -1,7 +1,7 @@
 {
     "tier1_minutes": 30,
     "tier1_amount": 0.5,
-    "tier2_minutes": 500,
+    "tier2_minutes": 40,
     "tier2_amount": 0.5,
     "daily_cap": 1.0
 }
