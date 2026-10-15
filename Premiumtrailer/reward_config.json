@@ -1,7 +1,20 @@
 {
-    "tier1_minutes": 1,
+    "tier1_minutes": 20,
     "tier1_amount": 0.5,
-    "tier2_minutes": 1,
+    "tier2_minutes": 50,
     "tier2_amount": 0.5,
-    "daily_cap": 1.0
+    "daily_cap": 1.0,
+
+    "premium_emails": [
+        "premium1@gmail.com",
+        "premium2@gmail.com"
+    ],
+
+    "premium": {
+        "tier1_minutes": 20,
+        "tier1_amount": 2.5,
+        "tier2_minutes": 50,
+        "tier2_amount": 2.5,
+        "daily_cap": 5.0
+    }
 }
