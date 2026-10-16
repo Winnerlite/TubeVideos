@@ -3,6 +3,7 @@
     "subtitle": "Earn up to $5.00 per day",
     "amount": "$5.00",
     "period": "per day earning cap",
+    "price_ngn": 5000,
     "benefits": [
         "Earn up to $5.00 per day",
         "No daily watch limits",
