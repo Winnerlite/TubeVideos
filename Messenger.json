@@ -1,5 +1,5 @@
 {
-    "enabled": true,
+    "enabled": false,
     "message": "App Update is available. Check for update",
     "level": "info",
     "minVersion": "",
